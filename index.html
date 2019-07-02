@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Number Guesser</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<h1><strong>Number</strong>Guesser</h1>
+			<h2>Ultimate Challenger Edition</h2>
+		</header>
+		<main>
+			<form>
+				<fieldset>
+					<legend>Set Range</legend>
+					Min Range
+					<input type="number" name="min-range" id="minRange">
+					Max Range
+					<input type="number" name="max-range" id="maxRange">
+					<input type="submit" value="UPDATE" id="update-button">
+				</fieldset>
+			</form>
+			<form>
+				<h3>The current range is <strong id="lowRange">1</strong> to <strong id="highRange">100</strong></h3>
+				<fieldset>
+					<legend >Challenger 1</legend>
+					Name
+					<input type="text" name="challenger1">
+					Guess
+					<input type="number" name="guess1">
+				</fieldset>
+				<fieldset>
+					<legend>Challenger 2</legend> 
+					Name
+					<input type="text" name="challenger2">
+					Guess
+					<input type="number" name="guess2">
+				</fieldset>
+					<input type="submit" value="SUBMIT GUESS" id="submit-guess-button">
+					<button type="reset" value="reset-game" id="reset-game-button">RESET GAME</button>
+					<button type="reset" value="clear-game" id="clear-game-button">CLEAR GAME</button>
+			</form>
+			<section>
+				<h3>Latest Score</h3>
+				<p class="challenger1"><span class="challenger1-name">Challenger 1 Name</span> current guess</p>
+				<p class="challenger2"><span class="challenger2-name">Challenger 2 Name</span> current guess</p>
+			</section>
+		</main>
+		<aside>content</aside>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
