@@ -35,23 +35,38 @@ var rangeMin = document.querySelector('#minRange');
 
 var rangeMax = document.querySelector('#maxRange');
 
-// var parsedMin = parseInt(rangeMin);
-
-// var parsedMax = parseInt(rangeMax);
+var randomNum = null;
 
 setRangeBtn.addEventListener('click', updateRanges)
 
 function updateRanges(event) {
   event.preventDefault();
-   console.log(rangeMin.value);
   if (parseInt(rangeMin.value) < parseInt(rangeMax.value)) {
     document.querySelector('#lowRange').innerHTML = rangeMin.value;
-    document.querySelector('#highRange').innerHTML = rangeMax.value;
-    } //else {return error message}
-  
-  return false;
+    document.querySelector('#highRange').innerHTML = rangeMax.value; 
+    randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)
+    } 
+    //else {return error message}
   } 
 
 
 // //Generate Random Number
-function randomNumber() {return Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)};
+
+
+// var person1Guess = document.querySelector('#guess1');
+
+// var person2Guess = document.querySelector('#guess2');
+
+function compareGuess() {
+  if (randomNum < parseInt(person1Guess.value)) 
+  {
+    document.querySelector('#high-or-low1').innerText = "that's too high"
+  } 
+  else if (randomNum > parseInt(person1Guess.value)) 
+  {
+    document.querySelector('#high-or-low1').innerText = "that's too low"
+  } 
+  else {
+        document.querySelector('#high-or-low1').innerText = "BOOM!"
+  }
+}
