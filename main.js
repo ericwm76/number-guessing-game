@@ -31,22 +31,27 @@
 //Set Range
 var setRangeBtn = document.querySelector('#update-button');
 
-var rangeMin = document.querySelector('#minRange').value;
+var rangeMin = document.querySelector('#minRange');
 
-var rangeMax = document.querySelector('#maxRange').value;
+var rangeMax = document.querySelector('#maxRange');
 
 // var parsedMin = parseInt(document.querySelector('#minRange').value);
 
 // var parsedMax = parseInt(document.querySelector('#maxRange').value);
 
-// setRangeBtn.addEventListener('click', updateRanges)
+setRangeBtn.addEventListener('click', updateRanges)
 
-function updateRanges() {
-  if (parseInt(rangeMin) < parseInt(rangeMax)) {
-    document.querySelector('#lowRange').innerText = (rangeMin);
-    document.querySelector('#highRange').innerText = (rangeMax);
+function updateRanges(event) {
+  event.preventDefault();
+   console.log(rangeMin.value);
+  if (parseInt(rangeMin.value) < parseInt(rangeMax.value)) {
+    document.querySelector('#lowRange').innerHTML = rangeMin.value;
+    document.querySelector('#highRange').innerHTML = rangeMax.value;
     } //else {return error message}
+  
+  return false;
   } 
+
 
 // //Generate Random Number
 // function randomNumber() {return Math.floor(Math.random() * (parsedMax - parsedMin + 1)) + parsedMin};
