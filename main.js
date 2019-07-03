@@ -33,20 +33,20 @@ var setRangeBtn = document.querySelector('#update-button');
 
 var rangeMin = document.querySelector('#minRange').value;
 
-var parsedMin = parseInt(document.querySelector('#minRange').value);
-
 var rangeMax = document.querySelector('#maxRange').value;
 
-var parsedMax = parseInt(document.querySelector('#maxRange').value);
+// var parsedMin = parseInt(document.querySelector('#minRange').value);
 
-setRangeBtn.addEventListener('click', updateRanges)
+// var parsedMax = parseInt(document.querySelector('#maxRange').value);
+
+// setRangeBtn.addEventListener('click', updateRanges)
 
 function updateRanges() {
-  if (parsedMin < parsedMax) {
-    document.querySelector('#lowRange').innerText.value = (rangeMin);
-    document.querySelector('#highRange').innerText.value = (rangeMax);
+  if (parseInt(rangeMin) < parseInt(rangeMax)) {
+    document.querySelector('#lowRange').innerText = (rangeMin);
+    document.querySelector('#highRange').innerText = (rangeMax);
     } //else {return error message}
   } 
 
-//Generate Random Number
-function randomNumber() {return Math.floor(Math.random() * (parsedMax - parsedMin + 1)) + parsedMin};
+// //Generate Random Number
+// function randomNumber() {return Math.floor(Math.random() * (parsedMax - parsedMin + 1)) + parsedMin};
