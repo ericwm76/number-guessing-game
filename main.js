@@ -35,9 +35,9 @@ var rangeMin = document.querySelector('#minRange');
 
 var rangeMax = document.querySelector('#maxRange');
 
-// var parsedMin = parseInt(document.querySelector('#minRange').value);
+// var parsedMin = parseInt(rangeMin);
 
-// var parsedMax = parseInt(document.querySelector('#maxRange').value);
+// var parsedMax = parseInt(rangeMax);
 
 setRangeBtn.addEventListener('click', updateRanges)
 
@@ -54,4 +54,4 @@ function updateRanges(event) {
 
 
 // //Generate Random Number
-// function randomNumber() {return Math.floor(Math.random() * (parsedMax - parsedMin + 1)) + parsedMin};
+function randomNumber() {return Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)};
