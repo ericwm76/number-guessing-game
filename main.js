@@ -1,5 +1,6 @@
 //Global Variables
   //var p1Name = document.querySelector(".")
+  //var setRangeBtn = document.querySelector('#update-button')
 
 //Add Event Listeners
   //Set Range: on click, grab inputs, start respective function
@@ -26,3 +27,28 @@
 
   //Disable buttons
     //Button default is disabled; adds style class when inputs are !== ""
+
+//Set Range
+var setRangeBtn = document.querySelector('#update-button');
+
+var rangeMinimum = document.querySelector('#minRange').value;
+
+var parsedRangeMinimum = parseInt(rangeMinimum);
+
+var rangeMaximum = document.querySelector('#maxRange').value;
+
+var parsedRangeMaximum = parseInt(rangeMaximum);
+
+// var lowRangeNumber = document.querySelector('#lowRange');
+
+// var highRangeNumber = document.querySelector('#highRange');
+
+setRangeBtn.addEventListener('click', function() {
+  if (parsedRangeMinimum < parsedRangeMaximum) {
+    document.querySelector('#lowRange').innerText = (rangeMinimum);
+    document.querySelector('#highRange').innerText = (rangeMaximum);
+    } //else {return error message}
+  } 
+
+
+
