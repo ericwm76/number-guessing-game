@@ -11,7 +11,7 @@
 			<h2>Ultimate Challenger Edition</h2>
 		</header>
 		<main>
-			<form>
+			<form class="set-range">
 				<fieldset>
 					<legend>Set Range</legend>
 					Min Range
@@ -21,21 +21,21 @@
 					<input type="submit" value="UPDATE" id="update-button">
 				</fieldset>
 			</form>
-			<form>
+			<form class="current-range">
 				<h3>The current range is <strong id="lowRange">1</strong> to <strong id="highRange">100</strong></h3>
 				<fieldset>
 					<legend >Challenger 1</legend>
 					Name
 					<input type="text" name="challenger1">
 					Guess
-					<input type="number" name="guess1">
+					<input type="number" name="guess1" id="guess1">
 				</fieldset>
 				<fieldset>
 					<legend>Challenger 2</legend> 
 					Name
 					<input type="text" name="challenger2">
 					Guess
-					<input type="number" name="guess2">
+					<input type="number" name="guess2" id="guess2">
 				</fieldset>
 					<input type="submit" value="SUBMIT GUESS" id="submit-guess-button">
 					<button type="reset" value="reset-game" id="reset-game-button">RESET GAME</button>
