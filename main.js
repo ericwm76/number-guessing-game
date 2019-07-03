@@ -17,7 +17,7 @@
 
   //Submit Guess
     //Random Number Generator
-    //grab min/max ranges from Set Range function, generate random number within that range.
+    //grab min/max ranges from Set Range inputs, generate random number within that range.
     //Compare guess 1 and guess 2 to a random number
     //Populate guesses to #player1-guess and #player2-guess, respectively
     //if (#guess1 < randomNumber) {return "that's too low"} else if (guess1 > randomNumber) {return "that's too high"} else {return "BOOM!"}
@@ -31,24 +31,22 @@
 //Set Range
 var setRangeBtn = document.querySelector('#update-button');
 
-var rangeMinimum = document.querySelector('#minRange').value;
+// var rangeMin = document.querySelector('#minRange').value;
 
-var parsedRangeMinimum = parseInt(rangeMinimum);
+var parsedMin = parseInt(document.querySelector('#minRange').value);
 
-var rangeMaximum = document.querySelector('#maxRange').value;
+// var rangeMax = document.querySelector('#maxRange').value;
 
-var parsedRangeMaximum = parseInt(rangeMaximum);
+var parsedMax = parseInt(document.querySelector('#maxRange').value);
 
-// var lowRangeNumber = document.querySelector('#lowRange');
+setRangeBtn.addEventListener('click', updateRanges)
 
-// var highRangeNumber = document.querySelector('#highRange');
-
-setRangeBtn.addEventListener('click', function() {
-  if (parsedRangeMinimum < parsedRangeMaximum) {
-    document.querySelector('#lowRange').innerText = (rangeMinimum);
-    document.querySelector('#highRange').innerText = (rangeMaximum);
+function updateRanges() {
+  if (parsedMin < parsedMax) {
+    document.querySelector('#lowRange').innerText = (rangeMin);
+    document.querySelector('#highRange').innerText = (rangeMax);
     } //else {return error message}
   } 
 
-
-
+//Generate Random Number
+function randomNumber() {return Math.floor(Math.random() * (parsedMax - parsedMin + 1)) + parsedMin};
