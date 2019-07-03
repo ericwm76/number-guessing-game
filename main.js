@@ -31,11 +31,11 @@
 //Set Range
 var setRangeBtn = document.querySelector('#update-button');
 
-// var rangeMin = document.querySelector('#minRange').value;
+var rangeMin = document.querySelector('#minRange').value;
 
 var parsedMin = parseInt(document.querySelector('#minRange').value);
 
-// var rangeMax = document.querySelector('#maxRange').value;
+var rangeMax = document.querySelector('#maxRange').value;
 
 var parsedMax = parseInt(document.querySelector('#maxRange').value);
 
@@ -43,8 +43,8 @@ setRangeBtn.addEventListener('click', updateRanges)
 
 function updateRanges() {
   if (parsedMin < parsedMax) {
-    document.querySelector('#lowRange').innerText = (rangeMin);
-    document.querySelector('#highRange').innerText = (rangeMax);
+    document.querySelector('#lowRange').innerText.value = (rangeMin);
+    document.querySelector('#highRange').innerText.value = (rangeMax);
     } //else {return error message}
   } 
 
