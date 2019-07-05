@@ -82,4 +82,15 @@ function submitGuess(event) {
   else {
         document.querySelector('#high-or-low1').innerText = "BOOM!"
   }
+    if (randomNum < parseInt(person2Guess.value)) 
+  {
+    document.querySelector('#high-or-low2').innerText = "that's too high"
+  } 
+  else if (randomNum > parseInt(person2Guess.value)) 
+  {
+    document.querySelector('#high-or-low2').innerText = "that's too low"
+  } 
+  else {
+        document.querySelector('#high-or-low2').innerText = "BOOM!"
+  }
 }
