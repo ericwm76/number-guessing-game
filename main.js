@@ -55,12 +55,22 @@ function updateRanges(event) {
 
 var person1Guess = document.querySelector('#guess1');
 
-// var person2Guess = document.querySelector('#guess2');
+var person2Guess = document.querySelector('#guess2');
 
+var person1Name = document.querySelector('#player1-name');
 
+var person2Name = document.querySelector('#player2-name');
 
+var submitGuessBtn = document.querySelector('#submit-guess-button')
 
-function compareGuess() {
+submitGuessBtn.addEventListener('click', submitGuess)
+
+function submitGuess(event) {
+  event.preventDefault();
+  document.querySelector('#player1-guess').innerText = person1Guess.value;
+  document.querySelector('.challenger1-name').innerText = person1Name.value;
+  document.querySelector('#player2-guess').innerText = person2Guess.value;
+    document.querySelector('.challenger2-name').innerText = person2Name.value;
   if (randomNum < parseInt(person1Guess.value)) 
   {
     document.querySelector('#high-or-low1').innerText = "that's too high"
