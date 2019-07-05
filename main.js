@@ -53,9 +53,12 @@ function updateRanges(event) {
 // //Generate Random Number
 
 
-// var person1Guess = document.querySelector('#guess1');
+var person1Guess = document.querySelector('#guess1');
 
 // var person2Guess = document.querySelector('#guess2');
+
+
+
 
 function compareGuess() {
   if (randomNum < parseInt(person1Guess.value)) 
