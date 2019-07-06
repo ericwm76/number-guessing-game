@@ -64,9 +64,22 @@ main {
 	flex-direction: column;
 }
 
+form h3 {
+	font-weight: 300;
+	margin-left: 3%;
+}
+
 form {
 	background: #ffffff;
 	border: 1px solid #d0d2d3;
+	max-width: 95%;
+	min-width: 95%;
+	margin: 0 auto;
+	margin-top: 2%;
+}
+
+fieldset legend {
+	font-weight: 700;
 }
 
 strong {
@@ -99,6 +112,11 @@ button {
 section {
 	background: #ffffff;
 	border: 1px solid #d0d2d3;
+	max-width: 95%;
+	min-width: 95%;
+	margin: 0 auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
 p {
