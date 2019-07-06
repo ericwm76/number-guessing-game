@@ -31,22 +31,66 @@
 //Set Range
 var setRangeBtn = document.querySelector('#update-button');
 
-var rangeMin = document.querySelector('#minRange').value;
+var rangeMin = document.querySelector('#minRange');
 
-var parsedMin = parseInt(document.querySelector('#minRange').value);
+var rangeMax = document.querySelector('#maxRange');
 
-var rangeMax = document.querySelector('#maxRange').value;
-
-var parsedMax = parseInt(document.querySelector('#maxRange').value);
+var randomNum = null;
 
 setRangeBtn.addEventListener('click', updateRanges)
 
-function updateRanges() {
-  if (parsedMin < parsedMax) {
-    document.querySelector('#lowRange').innerText.value = (rangeMin);
-    document.querySelector('#highRange').innerText.value = (rangeMax);
-    } //else {return error message}
+function updateRanges(event) {
+  event.preventDefault();
+  if (parseInt(rangeMin.value) < parseInt(rangeMax.value)) {
+    document.querySelector('#lowRange').innerHTML = rangeMin.value;
+    document.querySelector('#highRange').innerHTML = rangeMax.value; 
+    randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)
+    } 
+    //else {return error message}
   } 
 
-//Generate Random Number
-function randomNumber() {return Math.floor(Math.random() * (parsedMax - parsedMin + 1)) + parsedMin};
+
+// //Generate Random Number
+
+
+var person1Guess = document.querySelector('#guess1');
+
+var person2Guess = document.querySelector('#guess2');
+
+var person1Name = document.querySelector('#player1-name');
+
+var person2Name = document.querySelector('#player2-name');
+
+var submitGuessBtn = document.querySelector('#submit-guess-button')
+
+submitGuessBtn.addEventListener('click', submitGuess)
+
+function submitGuess(event) {
+  event.preventDefault();
+  document.querySelector('#player1-guess').innerText = person1Guess.value;
+  document.querySelector('.challenger1-name').innerText = person1Name.value;
+  document.querySelector('#player2-guess').innerText = person2Guess.value;
+    document.querySelector('.challenger2-name').innerText = person2Name.value;
+  if (randomNum < parseInt(person1Guess.value)) 
+  {
+    document.querySelector('#high-or-low1').innerText = "that's too high"
+  } 
+  else if (randomNum > parseInt(person1Guess.value)) 
+  {
+    document.querySelector('#high-or-low1').innerText = "that's too low"
+  } 
+  else {
+        document.querySelector('#high-or-low1').innerText = "BOOM!"
+  }
+    if (randomNum < parseInt(person2Guess.value)) 
+  {
+    document.querySelector('#high-or-low2').innerText = "that's too high"
+  } 
+  else if (randomNum > parseInt(person2Guess.value)) 
+  {
+    document.querySelector('#high-or-low2').innerText = "that's too low"
+  } 
+  else {
+        document.querySelector('#high-or-low2').innerText = "BOOM!"
+  }
+}
