@@ -125,19 +125,45 @@ section {
 	margin-bottom: 2%;
 }
 
+section h3 {
+	margin-left: 3%;
+	margin-top: 1%;
+	margin-bottom: 2%;
+	position: absolute;
+}
+
 p {
 	display: inline-flex;
 	flex-direction: row;
+	justify-content: center;
+	margin-left: 9%;
+	padding-top: 5%;
+}
+
+.challenger1-name {
+	font-weight: 700;
+}
+
+.challenger2-name {
+	font-weight: 700;
 }
 
 .challenger1 {
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
+	border-right: 1px solid #d0d2d3;
+	padding-right: 10%;
 }
 
 .challenger2{
 	flex-direction: column;
-	align-items: flex-end;
+	align-items: center;
+}
+
+.guesses {
+	font-size: 40px;
+	color: #DD1972;
+	font-weight: 700;
 }
 
 aside {
