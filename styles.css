@@ -40,14 +40,15 @@ h2:after {
     position: absolute;
     top: 29%;
     overflow: hidden;
-    width: 8%;
+    max-width: 13.5%;
+    min-width: 13.5%;
     height: 1px;
     content: '\a0';
     background-color: #ffffff;
 }
 
 h2:before {
-    margin-left: -10%;
+    margin-left: -15%;
     text-align: right;
 }
 
@@ -95,8 +96,11 @@ input[type="submit"] {
 	border-radius: 40px;
 	border-style: none;
 	color: #ffffff;
-	width: 32%;
-	max-width: 32%;
+	width: 28%;
+	max-width: 28%;
+	font-size: 14px;
+	margin-left: 4%;
+	margin-bottom: 2%; 	
 }
 
 button {
@@ -104,8 +108,10 @@ button {
 	border-radius: 40px;
 	border-style: none;
 	color: #ffffff;
-	width: 32%;
-	max-width: 32%;	
+	width: 28%;
+	max-width: 28%;
+	font-size: 14px; 
+	margin-left: 3%;	
 
 }
 
