@@ -10,33 +10,39 @@
 			<h1><strong>Number</strong>Guesser</h1>
 			<h2>Ultimate Challenger Edition</h2>
 		</header>
-		<div>
+		<div class="layout">
 		<main>
 			<form class="set-range">
 				<fieldset>
 					<legend>Set Range</legend>
-					Min Range
-					<input type="number" name="min-range" id="minRange">
-					Max Range
-					<input type="number" name="max-range" id="maxRange">
+					<p class="min-range">
+						<label>Min Range</label>
+						<input type="number" name="min-range" id="minRange"></p>
+					<p class="max-range">
+						<label>Max Range</label>
+						<input type="number" name="max-range" id="maxRange"></p>
 					<input type="submit" value="UPDATE" id="update-button">
 				</fieldset>
 			</form>
 			<form class="current-range">
-				<h3>The current range is <strong id="lowRange">1</strong> to <strong id="highRange">100</strong></h3>
+				<h3>The Current Range is <strong id="lowRange">1</strong> to <strong id="highRange">100</strong></h3>
 				<fieldset>
-					<legend >Challenger 1</legend>
-					Name
-					<input type="text" name="challenger1">
-					Guess
-					<input type="number" name="guess1" id="guess1">
+					<legend>Challenger 1</legend>
+					<p class="player">
+						<label>Name</label>
+						<input type="text" name="challenger1"></p>
+					<p class="player-guess">
+						<label>Guess</label>
+						<input type="number" name="guess1" id="guess1"></p>
 				</fieldset>
 				<fieldset>
 					<legend>Challenger 2</legend> 
-					Name
-					<input type="text" name="challenger2">
-					Guess
-					<input type="number" name="guess2" id="guess2">
+					<p class="player">
+						<label>Name</label>
+						<input type="text" name="challenger2"></p>
+					<p class="player-guess">
+						<label>Guess</label>
+						<input type="number" name="guess2" id="guess2"></p>
 				</fieldset>
 					<input type="submit" value="SUBMIT GUESS" id="submit-guess-button">
 					<button type="reset" value="reset-game" id="reset-game-button">RESET GAME</button>
