@@ -2,8 +2,8 @@
 	box-sizing: border-box;
 }
 body {
-	font-family: 'Open Sans', sans-serif;
 	background: #D1D2D4;
+	font-family: 'Open Sans', sans-serif;
 	margin: 0; 
 }
 div {
@@ -15,18 +15,18 @@ header {
 	background: #404041;
 	color: #DD1972;
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
-	text-align: center;
+	justify-content: center;
 	margin-bottom: 0;
+	text-align: center;
 	text-transform: uppercase;
 }
 
 h1 {
+	font-size: 80px;
 	font-weight: 300;
 	margin-bottom: 0;
 	margin-top: 0;
-	font-size: 80px;
 }
 
 header h1 strong {
@@ -35,25 +35,25 @@ header h1 strong {
 
 h2 {
 	color: #ffffff;
-	margin-bottom: 0;
-	margin-top: 0;
-	position: relative;
-	text-align: center;
 	font-size: 26px;
 	font-weight: 300;
+	margin-bottom: 0;
+	margin-top: 0;
 	padding-bottom: 20px;
+	position: relative;
+	text-align: center;
 }
 
 h2:before,
 h2:after {
-    position: absolute;
-    top: 29%;
-    overflow: hidden;
+    background-color: #ffffff;
+    content: '\a0';
+    height: 1px;
     max-width: 13.5%;
     min-width: 13.5%;
-    height: 1px;
-    content: '\a0';
-    background-color: #ffffff;
+    overflow: hidden;
+    position: absolute;
+    top: 29%;
 }
 
 h2:before {
@@ -138,6 +138,14 @@ input[type=submit]:hover {
   background-color: #DD1972;
 }
 
+button[type=submit]:hover {
+  background-color: #DD1972;
+}
+
+button[type=reset]:hover {
+  background-color: #DD1972;
+}
+
 .min-range {
 	width: 33%;
 }
@@ -174,7 +182,8 @@ button {
 	width: 24%;
 	max-width: 24%;
 	font-size: 18px; 
-	margin-left: 3%;	
+	margin-left: 6%;
+	margin-bottom: 2%;	
 
 }
 
