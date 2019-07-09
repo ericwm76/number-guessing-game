@@ -15,6 +15,10 @@
   //Set Range
     //If (lowRange < highRange) {Populate minimum range to #lowRange, populate max range to #highRange} else {return error message}
 
+  //Validate inputs
+    //Check for text in inputs - if value === "" return error msg
+    //Check that minRange < guess < maxRange - if guess < minRange, default to minRange; if guess > maxRange, default to maxRange.
+
   //Submit Guess
     //Random Number Generator
     //grab min/max ranges from Set Range inputs, generate random number within that range.
@@ -30,12 +34,17 @@
 
 //Set Range
 var setRangeBtn = document.querySelector('#update-button');
-
 var rangeMin = document.querySelector('#minRange');
-
 var rangeMax = document.querySelector('#maxRange');
-
 var randomNum = null;
+var person1Guess = document.querySelector('#guess1');
+var person2Guess = document.querySelector('#guess2');
+var person1Name = document.querySelector('#player1-name');
+var person2Name = document.querySelector('#player2-name');
+var submitGuessBtn = document.querySelector('#submit-guess-button')
+var nameMessage = 'Enter a name';
+var guessMessage1 = 'Enter a number';
+var guessMessage2 = 'Guess is not in range'
 
 // var winner = null;
 
@@ -44,6 +53,7 @@ var randomNum = null;
 // console.log(winner)
 
 setRangeBtn.addEventListener('click', updateRanges)
+submitGuessBtn.addEventListener('click', checkIfBlank)
 
 function updateRanges(event) {
   event.preventDefault();
@@ -56,20 +66,50 @@ function updateRanges(event) {
   } 
 
 
-// //Generate Random Number
+function checkIfBlank(event) {
+  event.preventDefault();
+  if (person1Name.value === "") {
+    document.querySelector('.name-error-message1').innerText = nameMessage;
+  } 
+  if (person2Name.value === "") {
+    document.querySelector('.guess-error-message1').innerText = guessMessage1;
+  } 
+  if (person1Guess.value === "") {
+    document.querySelector('.name-error-message2').innerText = nameMessage;
+  }
+  if (person2Guess.value === ""){
+    document.querySelector('.guess-error-message2').innerText = guessMessage1;
+  } 
+  else {
+    validateGuesses(event);
+  }
+}
 
 
-var person1Guess = document.querySelector('#guess1');
-
-var person2Guess = document.querySelector('#guess2');
-
-var person1Name = document.querySelector('#player1-name');
-
-var person2Name = document.querySelector('#player2-name');
-
-var submitGuessBtn = document.querySelector('#submit-guess-button')
-
-submitGuessBtn.addEventListener('click', submitGuess)
+function validateGuesses(event) {
+event.preventDefault();
+  if (person1Guess.value === NaN) {
+    document.querySelector('.guess-error-message1').innerText = guessMessage1;
+  }
+  if (person2Guess.value === NaN) {
+    document.querySelector('.guess-error-message2').innerText = guessMessage1;
+  }
+  if person1Guess.value < rangeMin.value {
+    document.querySelector('.guess-error-message1').innerText = guessMessage2;
+  }
+  if person1Guess.value > rangeMax.value {
+    document.querySelector('.guess-error-message1').innerText = guessMessage2;
+  }
+  if person2Guess.value < rangeMin.value {
+    document.querySelector('.guess-error-message2').innerText = guessMessage2;
+  }
+  if person2Guess.value > rangeMax.value {
+    document.querySelector('.guess-error-message2').innerText = guessMessage2;
+  }
+  else {
+    submitGuess(event);
+  }
+}
 
 function submitGuess(event) {
   event.preventDefault();
@@ -122,5 +162,3 @@ function createCards(winner, loser) {
   <p class='winner'>WINNER</p></div>`;
   document.querySelector('#card-holder').insertAdjacentHTML('afterbegin', winnerCard);
 }
-
-
