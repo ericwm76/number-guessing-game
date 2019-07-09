@@ -34,14 +34,20 @@
 
 //Set Range
 var setRangeBtn = document.querySelector('#update-button');
-
 var rangeMin = document.querySelector('#minRange');
-
 var rangeMax = document.querySelector('#maxRange');
-
 var randomNum = null;
+var person1Guess = document.querySelector('#guess1');
+var person2Guess = document.querySelector('#guess2');
+var person1Name = document.querySelector('#player1-name');
+var person2Name = document.querySelector('#player2-name');
+var submitGuessBtn = document.querySelector('#submit-guess-button')
+var nameMessage = 'Enter a name';
+var guessMessage1 = 'Enter a number';
+var guessMessage2 = 'Guess is not in range'
 
 setRangeBtn.addEventListener('click', updateRanges)
+submitGuessBtn.addEventListener('click', checkIfBlank)
 
 function updateRanges(event) {
   event.preventDefault();
@@ -52,21 +58,6 @@ function updateRanges(event) {
     } 
     //else {return error message}
   } 
-
-
-// //Generate Random Number
-
-
-var person1Guess = document.querySelector('#guess1');
-var person2Guess = document.querySelector('#guess2');
-var person1Name = document.querySelector('#player1-name');
-var person2Name = document.querySelector('#player2-name');
-var submitGuessBtn = document.querySelector('#submit-guess-button')
-var nameMessage = 'Enter a name';
-var guessMessage1 = 'Enter a number';
-var guessMessage2 = 'Guess is not in range'
-
-submitGuessBtn.addEventListener('click', checkIfBlank)
 
 
 function checkIfBlank(event) {
@@ -143,6 +134,3 @@ function submitGuess(event) {
         document.querySelector('#high-or-low2').innerText = "BOOM!"
   }
 }
-
-function adjustGuesses(person1Guess, person2Guess)
-
