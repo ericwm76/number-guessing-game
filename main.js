@@ -15,6 +15,10 @@
   //Set Range
     //If (lowRange < highRange) {Populate minimum range to #lowRange, populate max range to #highRange} else {return error message}
 
+  //Validate inputs
+    //Check for text in inputs - if value === "" return error msg
+    //Check that minRange < guess < maxRange - if guess < minRange, default to minRange; if guess > maxRange, default to maxRange.
+
   //Submit Guess
     //Random Number Generator
     //grab min/max ranges from Set Range inputs, generate random number within that range.
@@ -65,8 +69,63 @@ var submitGuessBtn = document.querySelector('#submit-guess-button')
 
 submitGuessBtn.addEventListener('click', submitGuess)
 
-function submitGuess(event) {
-  event.preventDefault();
+
+function checkIfBlank(player1, player2) {
+  var nameMessage = 'string';
+  var guessMessage = 'string';
+  var correctCount = 0;
+  if (person1Name.value === "") {
+    //create HTML element, target with querySelector.innerText = nameMessage
+    //correctCount++;
+  } 
+  if (person2Name.value === "") {
+    //create HTML element, target with querySelector
+  } 
+  if (person1Guess.value === "") {
+    //create HTML element, target with querySelector
+  }
+  if (person2Guess.value === ""){
+    //create HTML element, target with querySelector
+  }
+  // if (correctCount = 4) {
+   // return true
+  //}
+}
+
+function addGuess() {
+  var container = document.querySelector('#container')
+  var game = createElement(`<div>${person1Guess}<div>`)
+  container.append(game);
+}
+
+
+function validateInputs(event) {
+event.preventDefault();
+ var filled = checkIfBlank();
+  if (person1Guess.value === NaN) {
+    //create HTML element, target with querySelector
+  }
+  if (person2Guess.value === NaN) {
+
+  }
+  if person1Guess.value < rangeMin.value {
+    //create HTML element, target with querySelector
+  }
+  if person1Guess.value > rangeMax.value {
+    //create HTML element, target with querySelector
+  }
+  if person2Guess.value < rangeMin.value {
+    //create HTML element, target with querySelector
+  }
+  if person2Guess.value > rangeMax.value {
+    //create HTML element, target with querySelector
+  }
+  if (filled && isNumber && inRange) {
+    submitGuess(event)
+  }
+}
+
+function submitGuess() {
   document.querySelector('#player1-guess').innerText = person1Guess.value;
   document.querySelector('.challenger1-name').innerText = person1Name.value;
   document.querySelector('#player2-guess').innerText = person2Guess.value;
@@ -94,3 +153,6 @@ function submitGuess(event) {
         document.querySelector('#high-or-low2').innerText = "BOOM!"
   }
 }
+
+function adjustGuesses(person1Guess, person2Guess)
+
