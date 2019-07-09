@@ -68,6 +68,7 @@ h2:after {
 
 main {
 	background: #f7f7f7;
+	border-right: 2px solid #6e6e6e;
 	max-width: 50%;
 	min-width: 50%;
 	margin-top: 0;
@@ -239,14 +240,67 @@ section p {
 }
 
 aside {
-	max-width: 40%;
-	min-width: 40%;
+	max-width: 50%;
+	min-width: 50%;
 	margin-top: 0;
 	align-self: flex-start;
 	padding: 2% 5%; 
 }
 
-@media screen and (max-width: 320px) {
+/*winner card styling*/
+.winner-card {
+	background: #ffffff;
+	border: 1px solid #6e6e6e;
+	min-width: 100%;
+	height: 200px;
+	display: block;
+	text-align: center;
+}
+
+h4 {
+	font-weight: 700;
+	font-size: 20px;
+	border-width: 90%;
+	margin: 0;
+}
+
+h4 span {
+	font-weight: 300;
+}
+
+h4:after {
+	content:"";
+	display: block;	
+	margin: 0 auto;
+	width:94%;
+	padding-top: 1%;
+	border-bottom: 1px solid #eeeeee;
+}
+
+#winner-name {
+	display: block;
+	font-weight: 700;
+	font-size: 200%;
+	margin: 0;
+}
+
+.winner {
+	font-size: 200%;
+	margin: 4% 0;
+
+}
+
+.winner:after {
+	content:"";
+	display: block;	
+	margin: 0 auto;
+	width:94%;
+	padding-top: 5%;
+	border-bottom: 1px solid #eeeeee;
+}
+
+/*small screens*/
+@media (max-width: 320px) {
 	h1 {
 		font-size: 300%;
 	}
