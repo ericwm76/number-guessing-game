@@ -41,10 +41,10 @@ var person1Guess = document.querySelector('#guess1');
 var person2Guess = document.querySelector('#guess2');
 var person1Name = document.querySelector('#player1-name');
 var person2Name = document.querySelector('#player2-name');
-var submitGuessBtn = document.querySelector('#submit-guess-button')
+var submitGuessBtn = document.querySelector('#submit-guess-button');
 var nameMessage = 'Enter a name';
 var guessMessage1 = 'Enter a number';
-var guessMessage2 = 'Guess is not in range'
+var guessMessage2 = 'Guess is not in range';
 
 // var winner = null;
 
@@ -94,16 +94,16 @@ event.preventDefault();
   if (person2Guess.value === NaN) {
     document.querySelector('.guess-error-message2').innerText = guessMessage1;
   }
-  if person1Guess.value < rangeMin.value {
+  if (person1Guess.value < rangeMin.value) {
     document.querySelector('.guess-error-message1').innerText = guessMessage2;
   }
-  if person1Guess.value > rangeMax.value {
+  if (person1Guess.value > rangeMax.value) {
     document.querySelector('.guess-error-message1').innerText = guessMessage2;
   }
-  if person2Guess.value < rangeMin.value {
+  if (person2Guess.value < rangeMin.value) {
     document.querySelector('.guess-error-message2').innerText = guessMessage2;
   }
-  if person2Guess.value > rangeMax.value {
+  if (person2Guess.value > rangeMax.value) {
     document.querySelector('.guess-error-message2').innerText = guessMessage2;
   }
   else {
