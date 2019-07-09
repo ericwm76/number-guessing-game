@@ -37,6 +37,12 @@ var rangeMax = document.querySelector('#maxRange');
 
 var randomNum = null;
 
+// var winner = null;
+
+// var loser = null;
+
+// console.log(winner)
+
 setRangeBtn.addEventListener('click', updateRanges)
 
 function updateRanges(event) {
@@ -92,5 +98,29 @@ function submitGuess(event) {
   } 
   else {
         document.querySelector('#high-or-low2').innerText = "BOOM!"
+  } 
+  determineWinner();
+}
+
+function determineWinner() {
+  if (randomNum == parseInt(person1Guess.value)) {
+    var winner = person1Name.value;
+    var loser = person2Name.value;
+    createCards(winner, loser);
+  } else if (randomNum == parseInt(person2Guess.value)) {
+    var winner = person2Name.value;
+    var loser = person1Name.value;
+    createCards(winner, loser);
   }
 }
+
+
+function createCards(winner, loser) {
+  // console.log(winner)
+  var winnerCard = `<div class='winner-card'><h4>${person1Name.value}  <span>vs</span>  ${person2Name.value}</h4>
+  <h3 id='winner-name'> ${winner} </h3>
+  <p class='winner'>WINNER</p></div>`;
+  document.querySelector('#card-holder').insertAdjacentHTML('afterbegin', winnerCard);
+}
+
+
