@@ -55,6 +55,7 @@ var guessMessage2 = 'Guess is not in range';
 setRangeBtn.addEventListener('click', updateRanges)
 submitGuessBtn.addEventListener('click', checkIfBlank)
 
+
 function updateRanges(event) {
   event.preventDefault();
   if (parseInt(rangeMin.value) < parseInt(rangeMax.value)) {
@@ -85,6 +86,13 @@ function checkIfBlank(event) {
   }
 }
 
+var fields = document.querySelector('#guess1');
+             document.querySelector('#guess2');
+             document.querySelector('#player1-name');
+             document.querySelector('#player2-name');
+
+submitGuessBtn.addEventListener('click', submitGuess)
+fields.addEventListener('keyup', disableButton)
 
 function validateGuesses(event) {
 event.preventDefault();
@@ -110,6 +118,7 @@ event.preventDefault();
     submitGuess(event);
   }
 }
+
 
 function submitGuess(event) {
   event.preventDefault();
@@ -161,4 +170,42 @@ function createCards(winner, loser) {
   <h3 id='winner-name'> ${winner} </h3>
   <p class='winner'>WINNER</p></div>`;
   document.querySelector('#card-holder').insertAdjacentHTML('afterbegin', winnerCard);
+}
+
+// function disableButton() {
+//    if(document.querySelectorAll('input[type=text]').value === "" || document.querySelectorall('input[type=number]').value) === "" { 
+//             document.querySelector('#reset-game-button').disabled = true;
+//             document.queryselector('#clear-game-button').disabled = true; 
+//         } else { 
+//             document.querySelector('#reset-game-button').disabled = false;
+//             document.queryselector('#clear-game-button').disabled = false;
+//         }
+//     }
+
+function disableButton() {
+  if (person1Name !== '' || person1Guess !== '' || person2Name !== '' || person2Guess !== '') {
+    for (var i = 0; i < resetButtons.length; i++) {
+    resetButtons[i].disabled = false;
+    }
+    goodBtn();
+  } else {
+    for (var i = 0; i < resetButtons.length; i++) {
+    resetButtons[i].disabled = true;
+    }
+    grayBtn();
+  }
+}
+
+var resetButtons = document.querySelectorAll('.clear-btns');
+
+function grayBtn() {
+  for (var i = 0; i < resetButtons.length; i++) {
+    resetButtons[i].classList.add('gray-out');
+  }
+}
+
+function goodBtn() {
+    for (var i = 0; i < resetButtons.length; i++) {
+    resetButtons[i].classList.remove('gray-out');
+  }
 }
