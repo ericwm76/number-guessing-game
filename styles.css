@@ -194,10 +194,10 @@ button {
 	border-radius: 40px;
 	border-style: none;
 	color: #ffffff;
-	width: 24%;
-	max-width: 24%;
+	width: 27%;
+	max-width: 27%;
 	font-size: 18px; 
-	margin-left: 6%;
+	margin-left: 5%;
 	margin-bottom: 2%;	
 
 }
@@ -223,7 +223,7 @@ section p {
 	display: inline-flex;
 	flex-direction: row;
 	justify-content: center;
-	margin-left: 15%;
+	margin-left: 9%;
 	padding-top: 5%;
 }
 
@@ -238,13 +238,14 @@ section p {
 .challenger1 {
 	flex-direction: column;
 	align-items: center;
-	border-right: 1px solid #d0d2d3;
-	padding-right: 15%;
+	padding-right: 4%;
 }
 
 .challenger2{
 	flex-direction: column;
 	align-items: center;
+	border-left: 1px solid #d0d2d3;
+	padding-left: 10%;
 }
 
 .guesses {
@@ -261,10 +262,15 @@ aside {
 	padding: 2% 5%; 
 }
 
+.gray-out {
+	background: #d0d2d3;
+}
+
 /*winner card styling*/
 .winner-card {
 	background: #ffffff;
 	border: 1px solid #6e6e6e;
+	color: #7F7F7F;
 	min-width: 100%;
 	height: 200px;
 	display: block;
@@ -313,8 +319,45 @@ h4:after {
 	border-bottom: 1px solid #eeeeee;
 }
 
+/*medium screens*/
+
+@media (max-width: 875px) {
+	
+	#update-button {
+		min-width: 30%;
+		position: unset;
+		display: block;
+		margin-left: 0;
+	}
+
+	section p {
+		margin-left: 35%;
+	}
+
+	.challenger1 {
+		/*border-bottom: 1px solid #d0d2d3;*/	
+		padding-right: 0%;
+		padding-bottom: 6%;
+	}
+
+	.challenger1:after {
+	content:"";
+	display: block;	
+	margin: 0 0;
+	width: 150%;
+	padding-top: 5%;
+	border-bottom: 1px solid #d0d2d3;
+}
+
+	.challenger2 {
+		border: none;
+		padding-left: 0%;
+	}
+}
+	
+
 /*small screens*/
-@media (max-width: 320px) {
+@media (max-width: 688px) {
 	h1 {
 		font-size: 300%;
 	}
@@ -395,6 +438,10 @@ h4:after {
 		margin-left: 0;
 	}
 
+	.challenger1:after {
+		border-bottom: unset;
+	}
+
 	.challenger2 {
 		margin-left: 0;
 	}
@@ -403,5 +450,13 @@ h4:after {
   	max-width: 100%;
 		min-width: 100%;
   }
+}
+
+/*smallest screen*/
+
+@media (max-width: 450px) {
+	h1 {
+		font-size: 200%;
+	}
 }
 
