@@ -127,6 +127,10 @@ input[type="submit"] {
 	margin-bottom: 2%; 	
 }
 
+.error-message {
+    visibility: hidden;
+  }
+
 #update-button {
 	max-width: 20%;
 	font-size: 18px;
@@ -330,11 +334,6 @@ h4:after {
   .max-range {
   	width: 100%;
   	margin-left: 0;
-  }
-
-  .error-message {
-    font-color: ;
-    visibility: hidden;
   }
 
 

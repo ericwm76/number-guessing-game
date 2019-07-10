@@ -54,43 +54,40 @@ var guessMessage2 = 'Guess is not in range';
 
 // console.log(winner)
 
-setRangeBtn.addEventListener('click', updateRanges)
-submitGuessBtn.addEventListener('click', checkIfBlank)
+// Setting the Range
+setRangeBtn.addEventListener('click', checkRangeInputs)
 
-// rangeMin.addEventListener('keydown', checkForBlanks(rangeMin, document.querySelector('#range-error-message1')))
-
-// rangeMax.addEventListener('keydown', checkForBlanks(rangeMax, document.querySelector('#range-error-message2')))
-
-function checkForBlanks() {
- if (rangeMin.value === "") {
-  .classList.remove('error-message')
-} else {
-  updateRanges();
-}
-}
-
-
-// function validateRange() {
-  // if (rangeMin.value > rangeMax.value) {
-      // 
-    // } else {checkMinMax()
-      // }
-      // }  
-    
-
-
-function updateRanges(event) {
+function checkRangeInputs(e) {
   event.preventDefault();
-  if (parseInt(rangeMin.value) < parseInt(rangeMax.value)) {
+  if (rangeMin.value === "") {
+    minRangeMessage.classList.remove('error-message')
+  } if (rangeMax.value === "") {
+    maxRangeMessage.classList.remove('error-message')
+  } else {
+  validateRange();
+  }
+}
+
+function validateRange(e) {
+  event.preventDefault();
+  if (rangeMin.value > rangeMax.value) {
+      minRangeMessage.innerText = 'Min is greater than max';
+  } else {
+    updateRange();
+  }
+}  
+
+function updateRange(e) {
+  event.preventDefault();
     document.querySelector('#lowRange').innerHTML = rangeMin.value;
     document.querySelector('#highRange').innerHTML = rangeMax.value; 
     randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)
-    } 
-    //else {return error message}
   } 
 
+// Submitting Names and Guesses
+submitGuessBtn.addEventListener('click', checkGuessInputs)
 
-function checkIfBlank(event) {
+function checkGuessInputs(e) {
   event.preventDefault();
   if (person1Name.value === "") {
     document.querySelector('.name-error-message1').innerText = nameMessage;
