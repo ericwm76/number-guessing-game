@@ -37,16 +37,18 @@ var setRangeBtn = document.querySelector('#update-button');
 var rangeMin = document.querySelector('#minRange');
 var rangeMax = document.querySelector('#maxRange');
 var randomNum = null;
+var upperRange = document.querySelector('#highRange');
+var lowerRange = document.querySelector('#lowRange')
 var person1Guess = document.querySelector('#guess1');
 var person2Guess = document.querySelector('#guess2');
 var person1Name = document.querySelector('#player1-name');
 var person2Name = document.querySelector('#player2-name');
 var submitGuessBtn = document.querySelector('#submit-guess-button');
-var minRangeMessage = document.querySelector('#range-error-message1');
-var maxRangeMessage = document.querySelector('#range-error-message2');
-var nameMessage = 'Enter a name';
-var guessMessage1 = 'Enter a number';
-var guessMessage2 = 'Guess is not in range';
+var rangeMinMsg = document.querySelector('#range-error-message1');
+var rangeMaxMessage = document.querySelector('#range-error-message2');
+var nameMsg = 'Enter a name';
+var guessMsg1 = 'Enter a number';
+var guessMsg2 = 'Guess is not in range';
 
 // var winner = null;
 
@@ -55,16 +57,26 @@ var guessMessage2 = 'Guess is not in range';
 // console.log(winner)
 
 // Setting the Range
-setRangeBtn.addEventListener('click', checkRangeInputs)
+rangeMin.addEventListener('keyup', checkRangeInputs)
+// setRangeBtn.addEventListener('click', checkRangeInputs)
+
+function errorMsgAppear(inputField, errorField, errorMsg) {
+  inputField.classList.add('text-input-error');
+  errorField.classList.remove('error-message-hidden');
+  errorField.innerText = errorMsg;
+}
+
+function errorMsgDisappear(inputField, errorField) {
+  inputField.classList.remove('text-input-error');
+  errorField.classList.add('error-message-hidden');
+}
 
 function checkRangeInputs(e) {
   event.preventDefault();
   if (rangeMin.value === '') {
-    minRangeMessage.classList.remove('error-message-hidden');
-    rangeMin.classList.add('text-input-error');
-  } if (rangeMax.value === '') {
-    maxRangeMessage.classList.remove('error-message-hidden');
-    rangeMax.classList.add('text-input-error');
+    errorMsgAppear(rangeMin, rangeMinMsg, guessMsg1);
+  } else if (rangeMax.value === '') {
+    errorMsgAppear(rangeMax, rangeMaxMsg, guessMsg1);
   } else {
   validateRange();
   }
@@ -73,10 +85,7 @@ function checkRangeInputs(e) {
 function validateRange(e) {
   event.preventDefault();
   if (rangeMin.value >= rangeMax.value) {
-      minRangeMessage.classList.remove('error-message-hidden');
-      minRangeMessage.innerText = 'Min must be less than max';
-      rangeMin.classList.add('text-input-error');
-      rangeMax.classList.add('text-input-error');
+      errorMsgAppear(rangeMin, rangeMinMsg, 'Min must be less than max');
   } else {
     updateRange();
   }
@@ -84,14 +93,11 @@ function validateRange(e) {
 
 function updateRange(e) {
   event.preventDefault();
-    document.querySelector('#lowRange').innerHTML = rangeMin.value;
-    document.querySelector('#highRange').innerHTML = rangeMax.value; 
+    lowerRange.innerHTML = rangeMin.value;
+    upperRange.innerHTML = rangeMax.value; 
     randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
-    console.log(randomNum);
-    minRangeMessage.classList.add('error-message-hidden');
-    rangeMin.classList.remove('text-input-error');
-    maxRangeMessage.classList.add('error-message-hidden');
-    rangeMax.classList.remove('text-input-error');
+    errorMsgDisappear(rangeMin, rangeMinMsg);
+    errorMsgDisappear(rangeMax, rangeMaxMsg);
   } 
 
 // Submitting Names and Guesses
