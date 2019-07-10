@@ -26,29 +26,29 @@
 					<input type="submit" value="UPDATE" id="update-button">
 				</fieldset>
 			</form>
-			<form class="current-range">
+			<form class="current-range" name="current-range">
 				<h3>The Current Range is <strong id="lowRange">1</strong> to <strong id="highRange">100</strong></h3>
 				<fieldset>
 					<legend>Challenger 1</legend>
 					<p class="player">
 						<label>Name</label>
-						<input type="text" name="challenger1" id="player1-name"></p>
+						<input type="text" name="challenger1" id="player1-name" onkeypress="disableButton()"></p>
 					<p class="player-guess">
 						<label>Guess</label>
-						<input type="number" name="guess1" id="guess1"></p>
+						<input type="number" name="guess1" id="guess1" onkeypress="disableButton()"></p>
 				</fieldset>
 				<fieldset>
 					<legend>Challenger 2</legend> 
 					<p class="player">
 						<label>Name</label>
-						<input type="text" name="challenger2" id="player2-name"></p>
+						<input type="text" name="challenger2" id="player2-name" onkeypress="disableButton()"></p>
 					<p class="player-guess">
 						<label>Guess</label>
-						<input type="number" name="guess2" id="guess2"></p>
+						<input type="number" name="guess2" id="guess2" onkeypress="disableButton()"></p>
 				</fieldset>
 					<button type="submit" value="SUBMIT GUESS" id="submit-guess-button">SUBMIT GUESS</button> 
-					<button type="reset" value="reset-game" id="reset-game-button">RESET GAME</button>
-					<button type="reset" value="clear-game" id="clear-game-button">CLEAR GAME</button>
+					<button type="reset" value="reset-game" id="reset-game-button" class="gray-out clear-btns" onClick="window.location.reload();" disabled="true">RESET GAME</button>
+					<button type="reset" value="clear-game" id="clear-game-button" class="gray-out clear-btns" disabled="true">CLEAR GAME</button>
 			</form>
 			<section>
 				<h3>Latest Score</h3>
