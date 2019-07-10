@@ -42,6 +42,8 @@ var person2Guess = document.querySelector('#guess2');
 var person1Name = document.querySelector('#player1-name');
 var person2Name = document.querySelector('#player2-name');
 var submitGuessBtn = document.querySelector('#submit-guess-button');
+var minRangeMessage = document.querySelector('#range-error-message1');
+var maxRangeMessage = document.querySelector('#range-error-message1');
 var nameMessage = 'Enter a name';
 var guessMessage1 = 'Enter a number';
 var guessMessage2 = 'Guess is not in range';
@@ -54,6 +56,28 @@ var guessMessage2 = 'Guess is not in range';
 
 setRangeBtn.addEventListener('click', updateRanges)
 submitGuessBtn.addEventListener('click', checkIfBlank)
+
+// rangeMin.addEventListener('keydown', checkForBlanks(rangeMin, document.querySelector('#range-error-message1')))
+
+// rangeMax.addEventListener('keydown', checkForBlanks(rangeMax, document.querySelector('#range-error-message2')))
+
+function checkForBlanks() {
+ if (rangeMin.value === "") {
+  .classList.remove('error-message')
+} else {
+  updateRanges();
+}
+}
+
+
+// function validateRange() {
+  // if (rangeMin.value > rangeMax.value) {
+      // 
+    // } else {checkMinMax()
+      // }
+      // }  
+    
+
 
 function updateRanges(event) {
   event.preventDefault();
@@ -108,6 +132,7 @@ event.preventDefault();
   }
   else {
     submitGuess(event);
+    _checkIfBlank(event);
   }
 }
 
@@ -120,23 +145,19 @@ function submitGuess(event) {
   if (randomNum < parseInt(person1Guess.value)) 
   {
     document.querySelector('#high-or-low1').innerText = "that's too high"
-  } 
-  else if (randomNum > parseInt(person1Guess.value)) 
+  } else if (randomNum > parseInt(person1Guess.value)) 
   {
     document.querySelector('#high-or-low1').innerText = "that's too low"
-  } 
-  else {
+  } else {
         document.querySelector('#high-or-low1').innerText = "BOOM!"
   }
-    if (randomNum < parseInt(person2Guess.value)) 
+  if (randomNum < parseInt(person2Guess.value)) 
   {
     document.querySelector('#high-or-low2').innerText = "that's too high"
-  } 
-  else if (randomNum > parseInt(person2Guess.value)) 
+  } else if (randomNum > parseInt(person2Guess.value)) 
   {
     document.querySelector('#high-or-low2').innerText = "that's too low"
-  } 
-  else {
+  } else {
         document.querySelector('#high-or-low2').innerText = "BOOM!"
   } 
   determineWinner();

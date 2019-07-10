@@ -332,6 +332,12 @@ h4:after {
   	margin-left: 0;
   }
 
+  .error-message {
+    font-color: ;
+    visibility: hidden;
+  }
+
+
   #update-button {
   	margin-left: 0;
   	position: unset;
