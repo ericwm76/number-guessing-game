@@ -43,7 +43,7 @@ var person1Name = document.querySelector('#player1-name');
 var person2Name = document.querySelector('#player2-name');
 var submitGuessBtn = document.querySelector('#submit-guess-button');
 var minRangeMessage = document.querySelector('#range-error-message1');
-var maxRangeMessage = document.querySelector('#range-error-message1');
+var maxRangeMessage = document.querySelector('#range-error-message2');
 var nameMessage = 'Enter a name';
 var guessMessage1 = 'Enter a number';
 var guessMessage2 = 'Guess is not in range';
@@ -59,10 +59,12 @@ setRangeBtn.addEventListener('click', checkRangeInputs)
 
 function checkRangeInputs(e) {
   event.preventDefault();
-  if (rangeMin.value === "") {
-    minRangeMessage.classList.remove('error-message')
-  } if (rangeMax.value === "") {
-    maxRangeMessage.classList.remove('error-message')
+  if (rangeMin.value === '') {
+    minRangeMessage.classList.remove('error-message-hidden');
+    rangeMin.classList.add('text-input-error');
+  } if (rangeMax.value === '') {
+    maxRangeMessage.classList.remove('error-message-hidden');
+    rangeMax.classList.add('text-input-error');
   } else {
   validateRange();
   }
@@ -70,8 +72,11 @@ function checkRangeInputs(e) {
 
 function validateRange(e) {
   event.preventDefault();
-  if (rangeMin.value > rangeMax.value) {
-      minRangeMessage.innerText = 'Min is greater than max';
+  if (rangeMin.value >= rangeMax.value) {
+      minRangeMessage.classList.remove('error-message-hidden');
+      minRangeMessage.innerText = 'Min must be less than max';
+      rangeMin.classList.add('text-input-error');
+      rangeMax.classList.add('text-input-error');
   } else {
     updateRange();
   }
@@ -81,7 +86,12 @@ function updateRange(e) {
   event.preventDefault();
     document.querySelector('#lowRange').innerHTML = rangeMin.value;
     document.querySelector('#highRange').innerHTML = rangeMax.value; 
-    randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)
+    randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
+    console.log(randomNum);
+    minRangeMessage.classList.add('error-message-hidden');
+    rangeMin.classList.remove('text-input-error');
+    maxRangeMessage.classList.add('error-message-hidden');
+    rangeMax.classList.remove('text-input-error');
   } 
 
 // Submitting Names and Guesses
