@@ -36,7 +36,7 @@
 var setRangeBtn = document.querySelector('#update-button');
 var rangeMin = document.querySelector('#minRange');
 var rangeMax = document.querySelector('#maxRange');
-var randomNum = null;
+var randomNum = Math.floor((Math.random() * 100) + 1);
 var upperRange = document.querySelector('#highRange');
 var lowerRange = document.querySelector('#lowRange')
 var person1Guess = document.querySelector('#guess1');
@@ -121,7 +121,7 @@ submitGuessBtn.addEventListener('click', checkGuessInputs)
 
 function checkName1(e) {
   event.preventDefault();
-  if (.value === '') {
+  if (rangeMin.value === '') {
     errorMsgAppear(rangeMin, rangeMinMsg, guessMsg1);
   } 
 }
@@ -129,29 +129,29 @@ function checkName1(e) {
 function checkGuessInputs(e) {
   event.preventDefault();
   if (person1Name.value === "") {
-    document.querySelector('.name-error-message1').innerText = nameMessage;
+    document.querySelector('#name-error-message1').innerText = nameMsg;
   } 
   if (person2Name.value === "") {
-    document.querySelector('.guess-error-message1').innerText = guessMessage1;
+    document.querySelector('#guess-error-message1').innerText = guessMsg1;
   } 
   if (person1Guess.value === "") {
-    document.querySelector('.name-error-message2').innerText = nameMessage;
+    document.querySelector('#name-error-message2').innerText = nameMsg;
   }
   if (person2Guess.value === ""){
-    document.querySelector('.guess-error-message2').innerText = guessMessage1;
+    document.querySelector('#guess-error-message2').innerText = guessMsg1;
   } 
   else {
     validateGuesses(event);
   }
 }
 
-var fields = document.querySelector('#guess1');
-             document.querySelector('#guess2');
-             document.querySelector('#player1-name');
-             document.querySelector('#player2-name');
+// var fields = document.querySelector('#guess1');
+//              document.querySelector('#guess2');
+//              document.querySelector('#player1-name');
+//              document.querySelector('#player2-name');
 
-submitGuessBtn.addEventListener('click', submitGuess)
-fields.addEventListener('keyup', disableButton)
+// submitGuessBtn.addEventListener('click', submitGuess)
+// fields.addEventListener('keyup', disableButton)
 
 function validateGuesses(event) {
 event.preventDefault();
@@ -175,7 +175,7 @@ event.preventDefault();
   }
   else {
     submitGuess(event);
-    _checkIfBlank(event);
+    // _checkGuessInputs(event);
   }
 }
 
