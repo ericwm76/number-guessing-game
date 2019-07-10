@@ -19,10 +19,14 @@
 					<legend>Set Range</legend>
 					<p class="min-range">
 						<label>Min Range</label>
-						<input type="number" name="min-range" id="minRange"></p>
+						<input type="number" name="min-range" id="minRange">
+						<span class="error-message error-message-hidden" id="range-error-message1">Field cannot be blank</span>
+					</p>
 					<p class="max-range">
 						<label>Max Range</label>
-						<input type="number" name="max-range" id="maxRange"></p>
+						<input type="number" name="max-range" id="maxRange">
+						<span class="error-message error-message-hidden" id="range-error-message2">Field cannot be blank</span>
+					</p>
 					<input type="submit" value="UPDATE" id="update-button">
 				</fieldset>
 			</form>
@@ -33,12 +37,13 @@
 					<p class="player">
 						<label>Name</label>
 						<input type="text" name="challenger1" id="player1-name" onkeypress="disableButton()">
-						<span class="name-error-message1"></span>
+						<span class="error-message error-message-hidden" class="name-error-message1">Field cannot be blank</span>
 					</p>
 					<p class="player-guess">
 						<label>Guess</label>
 						<input type="number" name="guess1" id="guess1" onkeypress="disableButton()">
-						<span class="guess-error-message1"></span>	
+						<span class="error-message error-message-hidden" id="guess-error-message1">Field cannot be blank</span>	
+
 					</p>
 				</fieldset>
 				<fieldset>
@@ -46,13 +51,13 @@
 					<p class="player">
 						<label>Name</label>
 						<input type="text" name="challenger2" id="player2-name" onkeypress="disableButton()">
-						<span class="name-error-message2"></span>
+						<span class="error-message error-message-hidden" id="name-error-message2">Field cannot be blank</span>
 					</p>
 					<p class="player-guess">
 						<label>Guess</label>
 						<input type="number" name="guess2" id="guess2" onkeypress="disableButton()">
-						<span class="guess-error-message2"></span>
-          </p>
+						<span class="error-message error-message-hidden" id="guess-error-message2">Field cannot be blank</span>
+					</p>
 				</fieldset>
 					<button type="submit" value="SUBMIT GUESS" id="submit-guess-button">SUBMIT GUESS</button> 
 					<button type="reset" value="reset-game" id="reset-game-button" class="gray-out clear-btns" onClick="window.location.reload();" disabled="true">RESET GAME</button>

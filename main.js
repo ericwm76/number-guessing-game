@@ -37,14 +37,18 @@ var setRangeBtn = document.querySelector('#update-button');
 var rangeMin = document.querySelector('#minRange');
 var rangeMax = document.querySelector('#maxRange');
 var randomNum = null;
+var upperRange = document.querySelector('#highRange');
+var lowerRange = document.querySelector('#lowRange')
 var person1Guess = document.querySelector('#guess1');
 var person2Guess = document.querySelector('#guess2');
 var person1Name = document.querySelector('#player1-name');
 var person2Name = document.querySelector('#player2-name');
 var submitGuessBtn = document.querySelector('#submit-guess-button');
-var nameMessage = 'Enter a name';
-var guessMessage1 = 'Enter a number';
-var guessMessage2 = 'Guess is not in range';
+var rangeMinMsg = document.querySelector('#range-error-message1');
+var rangeMaxMsg = document.querySelector('#range-error-message2');
+var nameMsg = 'Enter a name';
+var guessMsg1 = 'Enter a number';
+var guessMsg2 = 'Guess is not in range';
 
 // var winner = null;
 
@@ -52,22 +56,77 @@ var guessMessage2 = 'Guess is not in range';
 
 // console.log(winner)
 
-setRangeBtn.addEventListener('click', updateRanges)
-submitGuessBtn.addEventListener('click', checkIfBlank)
+// Setting the Range
+// rangeMin.addEventListener('keyup', checkMinRange)
+// rangeMax.addEventListener('keyup', checkMaxRange)
+setRangeBtn.addEventListener('click', checkRangeInputs)
 
+function errorMsgAppear(inputField, errorField, errorMsg) {
+  inputField.classList.add('text-input-error');
+  errorField.classList.remove('error-message-hidden');
+  errorField.innerText = errorMsg;
+}
 
-function updateRanges(event) {
+function errorMsgDisappear(inputField, errorField) {
+  inputField.classList.remove('text-input-error');
+  errorField.classList.add('error-message-hidden');
+}
+
+function checkMinRange(e) {
   event.preventDefault();
-  if (parseInt(rangeMin.value) < parseInt(rangeMax.value)) {
-    document.querySelector('#lowRange').innerHTML = rangeMin.value;
-    document.querySelector('#highRange').innerHTML = rangeMax.value; 
-    randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value)
-    } 
-    //else {return error message}
+  if (rangeMin.value === '') {
+    errorMsgAppear(rangeMin, rangeMinMsg, guessMsg1);
+  } 
+}
+
+function checkMaxRange(e) {
+  event.preventDefault();
+  if (rangeMax.value === '') {
+    errorMsgAppear(rangeMax, rangeMaxMsg, guessMsg1);
+  } 
+} 
+
+function checkRangeInputs(e) {
+  event.preventDefault();
+  checkMinRange();
+  checkMaxRange();
+  // if (checkMinRange === true && checkMaxRange === true) {
+  console.log('checkRangeInputs ran');
+  validateRange();
+}
+// }
+
+function validateRange(e) {
+  event.preventDefault();
+  if (rangeMin.value >= rangeMax.value) {
+      errorMsgAppear(rangeMin, rangeMinMsg, 'Min must be less than max');
+  } else {
+    console.log('validateRange ran')
+    updateRange();
+  }
+}  
+
+function updateRange(e) {
+  event.preventDefault();
+    lowerRange.innerHTML = rangeMin.value;
+    upperRange.innerHTML = rangeMax.value; 
+    randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
+    console.log('updateRange ran')
+    errorMsgDisappear(rangeMin, rangeMinMsg);
+    errorMsgDisappear(rangeMax, rangeMaxMsg);
   } 
 
+// Submitting Names and Guesses
+submitGuessBtn.addEventListener('click', checkGuessInputs)
 
-function checkIfBlank(event) {
+function checkName1(e) {
+  event.preventDefault();
+  if (.value === '') {
+    errorMsgAppear(rangeMin, rangeMinMsg, guessMsg1);
+  } 
+}
+
+function checkGuessInputs(e) {
   event.preventDefault();
   if (person1Name.value === "") {
     document.querySelector('.name-error-message1').innerText = nameMessage;
@@ -116,6 +175,7 @@ event.preventDefault();
   }
   else {
     submitGuess(event);
+    _checkIfBlank(event);
   }
 }
 
@@ -129,23 +189,19 @@ function submitGuess(event) {
   if (randomNum < parseInt(person1Guess.value)) 
   {
     document.querySelector('#high-or-low1').innerText = "that's too high"
-  } 
-  else if (randomNum > parseInt(person1Guess.value)) 
+  } else if (randomNum > parseInt(person1Guess.value)) 
   {
     document.querySelector('#high-or-low1').innerText = "that's too low"
-  } 
-  else {
+  } else {
         document.querySelector('#high-or-low1').innerText = "BOOM!"
   }
-    if (randomNum < parseInt(person2Guess.value)) 
+  if (randomNum < parseInt(person2Guess.value)) 
   {
     document.querySelector('#high-or-low2').innerText = "that's too high"
-  } 
-  else if (randomNum > parseInt(person2Guess.value)) 
+  } else if (randomNum > parseInt(person2Guess.value)) 
   {
     document.querySelector('#high-or-low2').innerText = "that's too low"
-  } 
-  else {
+  } else {
         document.querySelector('#high-or-low2').innerText = "BOOM!"
   } 
   determineWinner();
