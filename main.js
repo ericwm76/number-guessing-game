@@ -18,6 +18,8 @@ var guess1Msg = document.querySelector('#guess-error-message1')
 var guess2Msg = document.querySelector('#guess-error-message2')
 var blankMsg = 'Field cannot be blank';
 var guessMsg = 'Enter a number within the range';
+var rangeValidator = 0;
+var submitGuessValidator = 0;
 
 function errorMsgAppear(inputField, errorField, errorMsg) {
   inputField.classList.add('text-input-error');
@@ -36,51 +38,47 @@ setRangeBtn.addEventListener('click', checkRangeInputs)
 
 function checkRangeInputs(e) {
   event.preventDefault();
-  // errorMsgDisappear(rangeMin, rangeMinMsg);
-  // errorMsgDisappear(rangeMax, rangeMaxMsg);
-  // rangeValidator = 0
+  rangeValidator = 0;
+  errorMsgDisappear(rangeMin, rangeMinMsg);
+  errorMsgDisappear(rangeMax, rangeMaxMsg);
   checkMinRange();
   checkMaxRange();
-  // if (checkMinRange === true && checkMaxRange === true) {
-    console.log('checkRangeInputs ran');
-    validateRange();
+  console.log('checkRangeInputs ran');
+  validateRange();
   }
 // }
 function checkMinRange() {
-  // event.preventDefault();
   if (rangeMin.value === '') {
     errorMsgAppear(rangeMin, rangeMinMsg, blankMsg);
   } 
-  // else {rangeValidator++}
+  else {rangeValidator++}
 }
 
 function checkMaxRange() {
-  // event.preventDefault();
   if (rangeMax.value === '') {
     errorMsgAppear(rangeMax, rangeMaxMsg, blankMsg);
   } 
-  // else {rangeValidator++}
+  else {rangeValidator++}
 } 
 
 function validateRange() {
-  // event.preventDefault();
   if (rangeMin.value >= rangeMax.value) {
       errorMsgAppear(rangeMin, rangeMinMsg, 'Min must be less than max');
   } else {
-    // rangeValidator++;
+    rangeValidator++;
     console.log('validateRange ran')
     updateRange();
   }
 }  
 
 function updateRange() {
-  // event.preventDefault();
-  // if (rangeValidator >= 3) {}
+  if (rangeValidator >= 3) {
     lowerRange.innerHTML = rangeMin.value;
     upperRange.innerHTML = rangeMax.value; 
     randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
     console.log('updateRange ran')
-  } 
+  }
+}   
 
 // Submitting Names and Guesses
 submitGuessBtn.addEventListener('click', checkGuessInputs)
@@ -90,7 +88,7 @@ function checkName1(e) {
   if (person1Name.value === '') {
     errorMsgAppear(person1Name, name1Msg, blankMsg);
   } 
-  // else {submitFieldsCounter++}
+  else {submitGuessValidator++}
 }
 
 function checkName2(e) {
@@ -98,7 +96,7 @@ function checkName2(e) {
   if (person2Name.value === '') {
     errorMsgAppear(person2Name, name2Msg, blankMsg);
   } 
-  // else {submitFieldsCounter++}
+  else {submitGuessValidator++}
 }
 
 function checkGuess1(e) {
@@ -106,7 +104,7 @@ function checkGuess1(e) {
   if (person1Guess.value === '') {
     errorMsgAppear(person1Guess, guess1Msg, blankMsg);
   } 
-  // else {submitFieldsCounter++}
+  else {submitGuessValidator++}
 }
 
 function checkGuess2(e) {
@@ -114,36 +112,25 @@ function checkGuess2(e) {
   if (person2Guess.value === '') {
     errorMsgAppear(person2Guess, guess2Msg, blankMsg);
   } 
-  // else {submitFieldsCounter++}
+  else {submitGuessValidator++}
 }
 
 function checkGuessInputs(e) {
   event.preventDefault();
+  submitGuessValidator = 0;
+  errorMsgDisappear(person1Name, name1Msg);
+  errorMsgDisappear(person2Name, name2Msg);
+  errorMsgDisappear(person1Guess, guess1Msg);
+  errorMsgDisappear(person2Guess, guess2Msg);
   console.log('checkGuessInputs ran');
   checkName1();
   checkName2();
   checkGuess1();
   checkGuess2();
-  // if (submitFieldsCounter >= 4) {
+  if (submitGuessValidator >= 4) {
   validateGuesses();
-  // }
+  }
 }
-//   if (person1Name.value === "") {
-//     document.querySelector('#name-error-message1').innerText = blankMsg;
-//   } 
-//   if (person2Name.value === "") {
-//     document.querySelector('#guess-error-message1').innerText = blankMsg;
-//   } 
-//   if (person1Guess.value === "") {
-//     document.querySelector('#name-error-message2').innerText = blankMsg;
-//   }
-//   if (person2Guess.value === ""){
-//     document.querySelector('#guess-error-message2').innerText = blankMsg;
-//   } 
-//   else {
-//     validateGuesses(event);
-//   }
-// }
 
 // var fields = document.querySelector('#guess1');
 //              document.querySelector('#guess2');
@@ -155,47 +142,30 @@ function checkGuessInputs(e) {
 
 function verifyGuess1(e) {
   event.preventDefault();
-  if (person1Guess.value === NaN && parseInt(rangeMin.value) <= person1Guess.value <= parseInt(rangeMax.value)) {
+  if (parseInt(rangeMin.value) >= parseInt(person1Guess.value) || parseInt(rangeMax.value) <= parseInt(person1Guess.value)) {
     errorMsgAppear(person1Guess, guess1Msg, guessMsg);
   } 
-  // else {submitFieldsCounter++}
+  else {submitGuessValidator++}
 }
 
 function verifyGuess2(e) {
   event.preventDefault();
-  if (person2Guess.value === NaN && parseInt(rangeMin.value) <= person2Guess.value <= parseInt(rangeMax.value)) {
+  if (parseInt(rangeMin.value) >= parseInt(person2Guess.value) || parseInt(rangeMax.value) <= parseInt(person2Guess.value)) {
     errorMsgAppear(person2Guess, guess2Msg, guessMsg);
   } 
-  // else {submitFieldsCounter++}
+  else {submitGuessValidator++}
 }
 
 function validateGuesses(e) {
-event.preventDefault();
-console.log('validateGuesses ran')
-  if (person1Guess.value === NaN) {
-    document.querySelector('#guess-error-message1').innerText = guessMsg;
-  }
-  if (person2Guess.value === NaN) {
-    document.querySelector('#guess-error-message2').innerText = guessMsg;
-  }
-  if (person1Guess.value < rangeMin.value) {
-    document.querySelector('#guess-error-message1').innerText = guessMsg;
-  }
-  if (person1Guess.value > rangeMax.value) {
-    document.querySelector('#guess-error-message1').innerText = guessMsg;
-  }
-  if (person2Guess.value < rangeMin.value) {
-    document.querySelector('#guess-error-message2').innerText = guessMsg;
-  }
-  if (person2Guess.value > rangeMax.value) {
-    document.querySelector('#guess-error-message2').innerText = guessMsg;
-  }
-  else {
+  event.preventDefault();
+  submitGuessValidator = 0;
+  console.log('validateGuesses ran');
+  verifyGuess1();
+  verifyGuess2();
+  if (submitGuessValidator >= 2) {
     submitGuess(event);
-    // _checkGuessInputs(event);
   }
 }
-
 
 function submitGuess(event) {
   event.preventDefault();
