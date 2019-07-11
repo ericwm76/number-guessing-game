@@ -16,6 +16,10 @@ var name1Msg = document.querySelector('#name-error-message1')
 var name2Msg = document.querySelector('#name-error-message2')
 var guess1Msg = document.querySelector('#guess-error-message1')
 var guess2Msg = document.querySelector('#guess-error-message2')
+var guess1Text = document.querySelector('#player1-guess')
+var guess2Text = document.querySelector('#player2-guess')
+var name1Text = document.querySelector('.challenger1-name')
+var name2Text = document.querySelector('.challenger2-name')
 var blankMsg = 'Field cannot be blank';
 var guessMsg = 'Enter a number within the range';
 var rangeValidator = 0;
@@ -43,7 +47,7 @@ function checkRangeInputs(e) {
   errorMsgDisappear(rangeMax, rangeMaxMsg);
   checkMinRange();
   checkMaxRange();
-  console.log('checkRangeInputs ran');
+  // console.log('checkRangeInputs ran');
   validateRange();
   }
 // }
@@ -66,7 +70,7 @@ function validateRange() {
       errorMsgAppear(rangeMin, rangeMinMsg, 'Min must be less than max');
   } else {
     rangeValidator++;
-    console.log('validateRange ran')
+    // console.log('validateRange ran')
     updateRange();
   }
 }  
@@ -76,7 +80,7 @@ function updateRange() {
     lowerRange.innerHTML = rangeMin.value;
     upperRange.innerHTML = rangeMax.value; 
     randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
-    console.log('updateRange ran')
+    // console.log('updateRange ran')
   }
 }   
 
@@ -122,7 +126,7 @@ function checkGuessInputs(e) {
   errorMsgDisappear(person2Name, name2Msg);
   errorMsgDisappear(person1Guess, guess1Msg);
   errorMsgDisappear(person2Guess, guess2Msg);
-  console.log('checkGuessInputs ran');
+  // console.log('checkGuessInputs ran');
   checkName1();
   checkName2();
   checkGuess1();
@@ -142,7 +146,7 @@ function checkGuessInputs(e) {
 
 function verifyGuess1(e) {
   event.preventDefault();
-  if (parseInt(rangeMin.value) >= parseInt(person1Guess.value) || parseInt(rangeMax.value) <= parseInt(person1Guess.value)) {
+  if (parseInt(rangeMin.value) > parseInt(person1Guess.value) || parseInt(rangeMax.value) < parseInt(person1Guess.value)) {
     errorMsgAppear(person1Guess, guess1Msg, guessMsg);
   } 
   else {submitGuessValidator++}
@@ -150,7 +154,7 @@ function verifyGuess1(e) {
 
 function verifyGuess2(e) {
   event.preventDefault();
-  if (parseInt(rangeMin.value) >= parseInt(person2Guess.value) || parseInt(rangeMax.value) <= parseInt(person2Guess.value)) {
+  if (parseInt(rangeMin.value) > parseInt(person2Guess.value) || parseInt(rangeMax.value) < parseInt(person2Guess.value)) {
     errorMsgAppear(person2Guess, guess2Msg, guessMsg);
   } 
   else {submitGuessValidator++}
@@ -159,7 +163,7 @@ function verifyGuess2(e) {
 function validateGuesses(e) {
   event.preventDefault();
   submitGuessValidator = 0;
-  console.log('validateGuesses ran');
+  // console.log('validateGuesses ran');
   verifyGuess1();
   verifyGuess2();
   if (submitGuessValidator >= 2) {
@@ -167,34 +171,39 @@ function validateGuesses(e) {
   }
 }
 
+function compareGuess1() {
+    if (randomNum < parseInt(person1Guess.value)) {
+    document.querySelector('#high-or-low1').innerText = "that's too high";
+  } else if (randomNum > parseInt(person1Guess.value)) {
+    document.querySelector('#high-or-low1').innerText = "that's too low";
+  } else {
+    document.querySelector('#high-or-low1').innerText = "BOOM!";
+  }
+}
+
+function compareGuess2() {
+    if (randomNum < parseInt(person2Guess.value)) {
+    document.querySelector('#high-or-low2').innerText = "that's too high";
+  } else if (randomNum > parseInt(person2Guess.value)) {
+    document.querySelector('#high-or-low2').innerText = "that's too low";
+  } else {
+    document.querySelector('#high-or-low2').innerText = "BOOM!";
+  }
+}
+
 function submitGuess(event) {
   event.preventDefault();
-  console.log('submitGuess ran')
-  document.querySelector('#player1-guess').innerText = person1Guess.value;
-  document.querySelector('.challenger1-name').innerText = person1Name.value;
-  document.querySelector('#player2-guess').innerText = person2Guess.value;
-    document.querySelector('.challenger2-name').innerText = person2Name.value;
-  if (randomNum < parseInt(person1Guess.value)) 
-  {
-    document.querySelector('#high-or-low1').innerText = "that's too high"
-  } else if (randomNum > parseInt(person1Guess.value)) 
-  {
-    document.querySelector('#high-or-low1').innerText = "that's too low"
-  } else {
-        document.querySelector('#high-or-low1').innerText = "BOOM!"
-  }
-  if (randomNum < parseInt(person2Guess.value)) 
-  {
-    document.querySelector('#high-or-low2').innerText = "that's too high"
-  } else if (randomNum > parseInt(person2Guess.value)) 
-  {
-    document.querySelector('#high-or-low2').innerText = "that's too low"
-  } else {
-        document.querySelector('#high-or-low2').innerText = "BOOM!"
-  } 
+  // console.log('submitGuess ran')
+  name1Text.innerText = person1Name.value;
+  guess1Text.innerText = person1Guess.value;
+  name2Text.innerText = person2Name.value;
+  guess2Text.innerText = person2Guess.value;
+  compareGuess1();
+  compareGuess2();
   determineWinner();
 }
 
+// Create Winner Cards
 function determineWinner() {
   if (randomNum == parseInt(person1Guess.value)) {
     var winner = person1Name.value;
