@@ -24,6 +24,8 @@ var blankMsg = 'Field cannot be blank';
 var guessMsg = 'Enter a number within the range';
 var rangeValidator = 0;
 var submitGuessValidator = 0;
+var resetButtons = document.querySelectorAll('.clear-btns');
+var cardCounter = 0;
 
 function errorMsgAppear(inputField, errorField, errorMsg) {
   inputField.classList.add('text-input-error');
@@ -216,30 +218,33 @@ function determineWinner() {
   }
 }
 
+function removeCard(elementId) {    
+  elementId.parentNode.removeChild(elementId); 
+}
 
 function createCards(winner, loser) {
-  // console.log(winner)
-  var winnerCard = `<div class='winner-card'><h4>${person1Name.value}  <span>vs</span>  ${person2Name.value}</h4>
+  var setId = cardCounter++;
+  var winnerCard = `<div class='winner-card' id='card${setId}'><h4>${person1Name.value}  <span>vs</span>  ${person2Name.value}</h4>
   <h3 id='winner-name'> ${winner} </h3>
-  <p class='winner'>WINNER</p></div>`;
+  <p class='winner'>WINNER</p><div id='delete-button' onclick='removeCard(card${setId})'><button class='remove-button'>&#x2717;</button></div></div>`;
   document.querySelector('#card-holder').insertAdjacentHTML('afterbegin', winnerCard);
 }
 
 function disableButton() {
-  if (person1Name !== '' || person1Guess !== '' || person2Name !== '' || person2Guess !== '') {
+  console.log(person1Name.value, person1Guess.value, person2Name.value, person2Guess.value)
+  if (person1Name.value !== '' || person1Guess.value !== '' || person2Name.value !== '' || person2Guess.value !== '') {
     for (var i = 0; i < resetButtons.length; i++) {
     resetButtons[i].disabled = false;
     }
     goodBtn();
   } else {
+    console.log('firing')
     for (var i = 0; i < resetButtons.length; i++) {
     resetButtons[i].disabled = true;
     }
     grayBtn();
   }
 }
-
-var resetButtons = document.querySelectorAll('.clear-btns');
 
 function grayBtn() {
   for (var i = 0; i < resetButtons.length; i++) {

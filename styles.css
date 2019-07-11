@@ -69,12 +69,12 @@ h2:after {
 main {
 	background: #f7f7f7;
 	border-right: 2px solid #6e6e6e;
+	height: 100%;
+	margin-bottom: 0;
+	margin-top: 0;
 	max-width: 50%;
 	min-width: 50%;
-	margin-top: 0;
-	margin-bottom: 0;
 	padding-bottom: 0;
-	height: 100%;
 }
 
 form h3 {
@@ -120,19 +120,19 @@ input[type="submit"] {
 	border-radius: 40px;
 	border-style: none;
 	color: #ffffff;
-	width: 24%;
-	max-width: 24%;
 	font-size: 18px;
-	margin-left: 10%;
 	margin-bottom: 2%; 	
+	margin-left: 10%;
+	max-width: 24%;
+	width: 24%;
 }
 
 #update-button {
-	max-width: 20%;
+	bottom: -30px;
 	font-size: 18px;
 	margin-left: 4%;
+	max-width: 20%;
 	position: relative;
-	bottom: -30px;
 }
 
 input[type=submit]:hover {
@@ -173,20 +173,18 @@ button[type=reset]:hover {
 }
 
 .player-guess {
-	width: 30%;
 	margin-left: 3%;
+	width: 30%;
 }
 
 input[type=text] {
-	width: 100%;
 	height: 40px;
-  /*border: 1px solid #D0D2D3;*/
+	width: 100%;
 }
 
 input[type=number] {
-	width: 100%;
 	height: 40px;
-  /*border: 1px solid #D0D2D3;*/
+	width: 100%;
 }
 
 button {
@@ -194,11 +192,11 @@ button {
 	border-radius: 40px;
 	border-style: none;
 	color: #ffffff;
-	width: 27%;
-	max-width: 27%;
 	font-size: 18px; 
-	margin-left: 5%;
 	margin-bottom: 2%;	
+	margin-left: 5%;
+	max-width: 27%;
+	width: 27%;
 
 }
 
@@ -236,29 +234,29 @@ section p {
 }
 
 .challenger1 {
-	flex-direction: column;
 	align-items: center;
+	flex-direction: column;
 	padding-right: 4%;
 }
 
 .challenger2{
-	flex-direction: column;
 	align-items: center;
 	border-left: 1px solid #d0d2d3;
+	flex-direction: column;
 	padding-left: 10%;
 }
 
 .guesses {
-	font-size: 90px;
 	color: #DD1972;
+	font-size: 90px;
 	font-weight: 700;
 }
 
 aside {
+	align-self: flex-start;
+	margin-top: 0;
 	max-width: 50%;
 	min-width: 50%;
-	margin-top: 0;
-	align-self: flex-start;
 	padding: 2% 5%; 
 }
 
@@ -271,17 +269,17 @@ aside {
 	background: #ffffff;
 	border: 1px solid #6e6e6e;
 	color: #7F7F7F;
-	min-width: 100%;
-	height: 200px;
 	display: block;
-	text-align: center;
+	height: 200px;
 	margin-bottom: 5%;
+	min-width: 100%;
+	text-align: center;
 }
 
 h4 {
-	font-weight: 700;
-	font-size: 20px;
 	border-width: 90%;
+	font-size: 20px;
+	font-weight: 700;
 	margin: 0;
 }
 
@@ -290,12 +288,12 @@ h4 span {
 }
 
 h4:after {
+	border-bottom: 1px solid #eeeeee;
 	content:"";
 	display: block;	
 	margin: 0 auto;
-	width:94%;
 	padding-top: 1%;
-	border-bottom: 1px solid #eeeeee;
+	width:94%;
 }
 
 #winner-name {
@@ -307,17 +305,23 @@ h4:after {
 
 .winner {
 	font-size: 200%;
-	margin: 4% 0;
+	margin: 1% 0;
 
 }
 
 .winner:after {
+	border-bottom: 1px solid #eeeeee;
 	content:"";
 	display: block;	
 	margin: 0 auto;
-	width:94%;
 	padding-top: 5%;
-	border-bottom: 1px solid #eeeeee;
+	width:94%;
+}
+
+.remove-button {
+    margin-left: 90%;
+    margin-top: 9px;
+    max-width: 25px;
 }
 
 /*medium screens*/
@@ -325,10 +329,10 @@ h4:after {
 @media (max-width: 875px) {
 	
 	#update-button {
-		min-width: 30%;
-		position: unset;
 		display: block;
 		margin-left: 0;
+		min-width: 30%;
+		position: unset;
 	}
 
 	section p {
@@ -336,18 +340,17 @@ h4:after {
 	}
 
 	.challenger1 {
-		/*border-bottom: 1px solid #d0d2d3;*/	
-		padding-right: 0%;
 		padding-bottom: 6%;
+		padding-right: 0%;
 	}
 
 	.challenger1:after {
+	border-bottom: 1px solid #d0d2d3;
 	content:"";
 	display: block;	
 	margin: 0 0;
-	width: 150%;
 	padding-top: 5%;
-	border-bottom: 1px solid #d0d2d3;
+	width: 150%;
 }
 
 	.challenger2 {
@@ -374,7 +377,7 @@ h4:after {
 
   main {
   	max-width: 100%;
-		min-width: 100%;
+	min-width: 100%;
   }
   .set-range {
   	display: flex;
@@ -386,8 +389,8 @@ h4:after {
   }
 
   .max-range {
-  	width: 100%;
   	margin-left: 0;
+  	width: 100%;
   }
 
 
@@ -406,18 +409,18 @@ h4:after {
   }
 
   .player-guess {
-  	width: 96%;
   	margin-left: 0;
+  	width: 96%;
   }
 
   #submit-guess-button,
   #reset-game-button, 
   #clear-game-button {
-  	min-width: 96%;
+  	line-height: 1.75;
+  	margin-bottom: 1%;
   	margin-left: 2%;
   	margin-top: 2%;
-  	margin-bottom: 1%;
-  	line-height: 1.75;
+  	min-width: 96%;
   }
 
   section {
@@ -428,15 +431,15 @@ h4:after {
   }
 
   section h3 {
-  	top: 1%;
   	left: 1%;
+  	top: 1%;
   }
 
   .challenger1 {
-  	border-right: none;
+	margin-left: 0;
+	padding-right: unset;
   	border-bottom: 1px solid #d0d2d3;
-		padding-right: unset;
-		margin-left: 0;
+  	border-right: none;
 	}
 
 	.challenger1:after {
@@ -449,7 +452,7 @@ h4:after {
 
   aside {
   	max-width: 100%;
-		min-width: 100%;
+	min-width: 100%;
   }
 }
 
