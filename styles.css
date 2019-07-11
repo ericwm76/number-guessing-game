@@ -153,6 +153,7 @@ button[type=reset]:hover {
 
 .error-message {
     font-color: #DD1972;
+    color: #DD1972;
   }
 
 .error-message-hidden {

@@ -1,4 +1,4 @@
-//Set Range
+//Global Variables
 var setRangeBtn = document.querySelector('#update-button');
 var rangeMin = document.querySelector('#minRange');
 var rangeMax = document.querySelector('#maxRange');
@@ -47,22 +47,19 @@ function checkRangeInputs(e) {
   errorMsgDisappear(rangeMax, rangeMaxMsg);
   checkMinRange();
   checkMaxRange();
-  // console.log('checkRangeInputs ran');
   validateRange();
   }
-// }
+
 function checkMinRange() {
   if (rangeMin.value === '') {
     errorMsgAppear(rangeMin, rangeMinMsg, blankMsg);
-  } 
-  else {rangeValidator++}
+  } else {rangeValidator++}
 }
 
 function checkMaxRange() {
   if (rangeMax.value === '') {
     errorMsgAppear(rangeMax, rangeMaxMsg, blankMsg);
-  } 
-  else {rangeValidator++}
+  } else {rangeValidator++}
 } 
 
 function validateRange() {
@@ -70,7 +67,6 @@ function validateRange() {
       errorMsgAppear(rangeMin, rangeMinMsg, 'Min must be less than max');
   } else {
     rangeValidator++;
-    // console.log('validateRange ran')
     updateRange();
   }
 }  
@@ -80,7 +76,6 @@ function updateRange() {
     lowerRange.innerHTML = rangeMin.value;
     upperRange.innerHTML = rangeMax.value; 
     randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
-    // console.log('updateRange ran')
   }
 }   
 
@@ -91,32 +86,28 @@ function checkName1(e) {
   event.preventDefault();
   if (person1Name.value === '') {
     errorMsgAppear(person1Name, name1Msg, blankMsg);
-  } 
-  else {submitGuessValidator++}
+  } else {submitGuessValidator++}
 }
 
 function checkName2(e) {
   event.preventDefault();
   if (person2Name.value === '') {
     errorMsgAppear(person2Name, name2Msg, blankMsg);
-  } 
-  else {submitGuessValidator++}
+  } else {submitGuessValidator++}
 }
 
 function checkGuess1(e) {
   event.preventDefault();
   if (person1Guess.value === '') {
     errorMsgAppear(person1Guess, guess1Msg, blankMsg);
-  } 
-  else {submitGuessValidator++}
+  } else {submitGuessValidator++}
 }
 
 function checkGuess2(e) {
   event.preventDefault();
   if (person2Guess.value === '') {
     errorMsgAppear(person2Guess, guess2Msg, blankMsg);
-  } 
-  else {submitGuessValidator++}
+  } else {submitGuessValidator++}
 }
 
 function checkGuessInputs(e) {
@@ -126,7 +117,6 @@ function checkGuessInputs(e) {
   errorMsgDisappear(person2Name, name2Msg);
   errorMsgDisappear(person1Guess, guess1Msg);
   errorMsgDisappear(person2Guess, guess2Msg);
-  // console.log('checkGuessInputs ran');
   checkName1();
   checkName2();
   checkGuess1();
@@ -148,22 +138,19 @@ function verifyGuess1(e) {
   event.preventDefault();
   if (parseInt(rangeMin.value) > parseInt(person1Guess.value) || parseInt(rangeMax.value) < parseInt(person1Guess.value)) {
     errorMsgAppear(person1Guess, guess1Msg, guessMsg);
-  } 
-  else {submitGuessValidator++}
+  }  else {submitGuessValidator++}
 }
 
 function verifyGuess2(e) {
   event.preventDefault();
   if (parseInt(rangeMin.value) > parseInt(person2Guess.value) || parseInt(rangeMax.value) < parseInt(person2Guess.value)) {
     errorMsgAppear(person2Guess, guess2Msg, guessMsg);
-  } 
-  else {submitGuessValidator++}
+  } else {submitGuessValidator++}
 }
 
 function validateGuesses(e) {
   event.preventDefault();
   submitGuessValidator = 0;
-  // console.log('validateGuesses ran');
   verifyGuess1();
   verifyGuess2();
   if (submitGuessValidator >= 2) {
@@ -193,7 +180,6 @@ function compareGuess2() {
 
 function submitGuess(event) {
   event.preventDefault();
-  // console.log('submitGuess ran')
   name1Text.innerText = person1Name.value;
   guess1Text.innerText = person1Guess.value;
   name2Text.innerText = person2Name.value;
@@ -218,7 +204,6 @@ function determineWinner() {
 
 
 function createCards(winner, loser) {
-  // console.log(winner)
   var winnerCard = `<div class='winner-card'><h4>${person1Name.value}  <span>vs</span>  ${person2Name.value}</h4>
   <h3 id='winner-name'> ${winner} </h3>
   <p class='winner'>WINNER</p></div>`;
