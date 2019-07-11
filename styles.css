@@ -180,11 +180,13 @@ button[type=reset]:hover {
 input[type=text] {
 	height: 40px;
 	width: 100%;
+	border: 1px solid #d0d2d3;
 }
 
 input[type=number] {
 	height: 40px;
 	width: 100%;
+	border: 1px solid #d0d2d3;
 }
 
 button {
