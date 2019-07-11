@@ -1,7 +1,7 @@
 # Number Guessing Game
 
 ## Overview
-This was our second project and first paired project at Turing. We were given the below comp to recreate. This project focused more heavily on JavaScript, and incorporate some more advanced CSS techniques, such as, FlexBox. During this project, we also utilized Git, GitHub, and branches as part of the paired project workflow. The goal was to create a visually accurate representation of the comp we were given, and to produce a well function UI/UX. 
+This was our second project and first paired project at Turing. We were given the below comp to recreate. This project focused more heavily on JavaScript, and incorporate some more advanced CSS techniques, such as FlexBox. During this project, we also utilized Git, GitHub, and branches as part of the paired project workflow. The goal was to create a visually accurate representation of the comp we were given, and to produce a well function UI/UX. 
 
 
 
