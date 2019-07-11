@@ -12,20 +12,18 @@ var person2Name = document.querySelector('#player2-name');
 var submitGuessBtn = document.querySelector('#submit-guess-button');
 var rangeMinMsg = document.querySelector('#range-error-message1');
 var rangeMaxMsg = document.querySelector('#range-error-message2');
-var nameMsg = 'Enter a name';
-var guessMsg1 = 'Enter a number';
-var guessMsg2 = 'Guess is not in range';
-
-// var winner = null;
-
-// var loser = null;
-
-// console.log(winner)
-
-// Setting the Range
-// rangeMin.addEventListener('keyup', checkMinRange)
-// rangeMax.addEventListener('keyup', checkMaxRange)
-setRangeBtn.addEventListener('click', checkRangeInputs)
+var name1Msg = document.querySelector('#name-error-message1')
+var name2Msg = document.querySelector('#name-error-message2')
+var guess1Msg = document.querySelector('#guess-error-message1')
+var guess2Msg = document.querySelector('#guess-error-message2')
+var guess1Text = document.querySelector('#player1-guess')
+var guess2Text = document.querySelector('#player2-guess')
+var name1Text = document.querySelector('.challenger1-name')
+var name2Text = document.querySelector('.challenger2-name')
+var blankMsg = 'Field cannot be blank';
+var guessMsg = 'Enter a number within the range';
+var rangeValidator = 0;
+var submitGuessValidator = 0;
 
 function errorMsgAppear(inputField, errorField, errorMsg) {
   inputField.classList.add('text-input-error');
@@ -38,77 +36,103 @@ function errorMsgDisappear(inputField, errorField) {
   errorField.classList.add('error-message-hidden');
 }
 
-function checkMinRange(e) {
-  event.preventDefault();
-  if (rangeMin.value === '') {
-    errorMsgAppear(rangeMin, rangeMinMsg, guessMsg1);
-  } 
-}
+// Setting the Range
+setRangeBtn.addEventListener('click', checkRangeInputs)
 
-function checkMaxRange(e) {
-  event.preventDefault();
-  if (rangeMax.value === '') {
-    errorMsgAppear(rangeMax, rangeMaxMsg, guessMsg1);
-  } 
-} 
 
 function checkRangeInputs(e) {
   event.preventDefault();
+  rangeValidator = 0;
+  errorMsgDisappear(rangeMin, rangeMinMsg);
+  errorMsgDisappear(rangeMax, rangeMaxMsg);
   checkMinRange();
   checkMaxRange();
-  // if (checkMinRange === true && checkMaxRange === true) {
-  console.log('checkRangeInputs ran');
+  // console.log('checkRangeInputs ran');
   validateRange();
-}
+  }
 // }
+function checkMinRange() {
+  if (rangeMin.value === '') {
+    errorMsgAppear(rangeMin, rangeMinMsg, blankMsg);
+  } 
+  else {rangeValidator++}
+}
 
-function validateRange(e) {
-  event.preventDefault();
+function checkMaxRange() {
+  if (rangeMax.value === '') {
+    errorMsgAppear(rangeMax, rangeMaxMsg, blankMsg);
+  } 
+  else {rangeValidator++}
+} 
+
+function validateRange() {
   if (rangeMin.value >= rangeMax.value) {
       errorMsgAppear(rangeMin, rangeMinMsg, 'Min must be less than max');
   } else {
-    console.log('validateRange ran')
+    rangeValidator++;
+    // console.log('validateRange ran')
     updateRange();
   }
 }  
 
-function updateRange(e) {
-  event.preventDefault();
+function updateRange() {
+  if (rangeValidator >= 3) {
     lowerRange.innerHTML = rangeMin.value;
     upperRange.innerHTML = rangeMax.value; 
     randomNum = Math.floor(Math.random() * (parseInt(rangeMax.value) - parseInt(rangeMin.value) + 1)) + parseInt(rangeMin.value);
-    console.log('updateRange ran')
-    errorMsgDisappear(rangeMin, rangeMinMsg);
-    errorMsgDisappear(rangeMax, rangeMaxMsg);
-  } 
+    // console.log('updateRange ran')
+  }
+}   
 
 // Submitting Names and Guesses
 submitGuessBtn.addEventListener('click', checkGuessInputs)
 
 function checkName1(e) {
   event.preventDefault();
-  if (rangeMin.value === '') {
-    errorMsgAppear(rangeMin, rangeMinMsg, guessMsg1);
+  if (person1Name.value === '') {
+    errorMsgAppear(person1Name, name1Msg, blankMsg);
   } 
+  else {submitGuessValidator++}
+}
+
+function checkName2(e) {
+  event.preventDefault();
+  if (person2Name.value === '') {
+    errorMsgAppear(person2Name, name2Msg, blankMsg);
+  } 
+  else {submitGuessValidator++}
+}
+
+function checkGuess1(e) {
+  event.preventDefault();
+  if (person1Guess.value === '') {
+    errorMsgAppear(person1Guess, guess1Msg, blankMsg);
+  } 
+  else {submitGuessValidator++}
+}
+
+function checkGuess2(e) {
+  event.preventDefault();
+  if (person2Guess.value === '') {
+    errorMsgAppear(person2Guess, guess2Msg, blankMsg);
+  } 
+  else {submitGuessValidator++}
 }
 
 function checkGuessInputs(e) {
   event.preventDefault();
-  console.log('checkGuessInputs ran')
-  if (person1Name.value === "") {
-    document.querySelector('#name-error-message1').innerText = nameMsg;
-  } 
-  if (person2Name.value === "") {
-    document.querySelector('#guess-error-message1').innerText = guessMsg1;
-  } 
-  if (person1Guess.value === "") {
-    document.querySelector('#name-error-message2').innerText = nameMsg;
-  }
-  if (person2Guess.value === ""){
-    document.querySelector('#guess-error-message2').innerText = guessMsg1;
-  } 
-  else {
-    validateGuesses(event);
+  submitGuessValidator = 0;
+  errorMsgDisappear(person1Name, name1Msg);
+  errorMsgDisappear(person2Name, name2Msg);
+  errorMsgDisappear(person1Guess, guess1Msg);
+  errorMsgDisappear(person2Guess, guess2Msg);
+  // console.log('checkGuessInputs ran');
+  checkName1();
+  checkName2();
+  checkGuess1();
+  checkGuess2();
+  if (submitGuessValidator >= 4) {
+  validateGuesses();
   }
 }
 
@@ -117,65 +141,69 @@ function checkGuessInputs(e) {
 //              document.querySelector('#player1-name');
 //              document.querySelector('#player2-name');
 
-// submitGuessBtn.addEventListener('click', submitGuess)
 // fields.addEventListener('keyup', disableButton)
 
-function validateGuesses(event) {
-event.preventDefault();
-console.log('validateGuess ran')
-  if (person1Guess.value === NaN) {
-    document.querySelector('#guess-error-message1').innerText = guessMsg1;
-  }
-  if (person2Guess.value === NaN) {
-    document.querySelector('#guess-error-message2').innerText = guessMsg1;
-  }
-  if (person1Guess.value < rangeMin.value) {
-    document.querySelector('#guess-error-message1').innerText = guessMsg2;
-  }
-  if (person1Guess.value > rangeMax.value) {
-    document.querySelector('#guess-error-message1').innerText = guessMsg2;
-  }
-  if (person2Guess.value < rangeMin.value) {
-    document.querySelector('#guess-error-message2').innerText = guessMsg2;
-  }
-  if (person2Guess.value > rangeMax.value) {
-    document.querySelector('#guess-error-message2').innerText = guessMsg2;
-  }
-  else {
+
+function verifyGuess1(e) {
+  event.preventDefault();
+  if (parseInt(rangeMin.value) > parseInt(person1Guess.value) || parseInt(rangeMax.value) < parseInt(person1Guess.value)) {
+    errorMsgAppear(person1Guess, guess1Msg, guessMsg);
+  } 
+  else {submitGuessValidator++}
+}
+
+function verifyGuess2(e) {
+  event.preventDefault();
+  if (parseInt(rangeMin.value) > parseInt(person2Guess.value) || parseInt(rangeMax.value) < parseInt(person2Guess.value)) {
+    errorMsgAppear(person2Guess, guess2Msg, guessMsg);
+  } 
+  else {submitGuessValidator++}
+}
+
+function validateGuesses(e) {
+  event.preventDefault();
+  submitGuessValidator = 0;
+  // console.log('validateGuesses ran');
+  verifyGuess1();
+  verifyGuess2();
+  if (submitGuessValidator >= 2) {
     submitGuess(event);
-    // _checkGuessInputs(event);
   }
 }
 
+function compareGuess1() {
+    if (randomNum < parseInt(person1Guess.value)) {
+    document.querySelector('#high-or-low1').innerText = "that's too high";
+  } else if (randomNum > parseInt(person1Guess.value)) {
+    document.querySelector('#high-or-low1').innerText = "that's too low";
+  } else {
+    document.querySelector('#high-or-low1').innerText = "BOOM!";
+  }
+}
+
+function compareGuess2() {
+    if (randomNum < parseInt(person2Guess.value)) {
+    document.querySelector('#high-or-low2').innerText = "that's too high";
+  } else if (randomNum > parseInt(person2Guess.value)) {
+    document.querySelector('#high-or-low2').innerText = "that's too low";
+  } else {
+    document.querySelector('#high-or-low2').innerText = "BOOM!";
+  }
+}
 
 function submitGuess(event) {
   event.preventDefault();
-  console.log('submitGuess ran')
-  document.querySelector('#player1-guess').innerText = person1Guess.value;
-  document.querySelector('.challenger1-name').innerText = person1Name.value;
-  document.querySelector('#player2-guess').innerText = person2Guess.value;
-    document.querySelector('.challenger2-name').innerText = person2Name.value;
-  if (randomNum < parseInt(person1Guess.value)) 
-  {
-    document.querySelector('#high-or-low1').innerText = "that's too high"
-  } else if (randomNum > parseInt(person1Guess.value)) 
-  {
-    document.querySelector('#high-or-low1').innerText = "that's too low"
-  } else {
-        document.querySelector('#high-or-low1').innerText = "BOOM!"
-  }
-  if (randomNum < parseInt(person2Guess.value)) 
-  {
-    document.querySelector('#high-or-low2').innerText = "that's too high"
-  } else if (randomNum > parseInt(person2Guess.value)) 
-  {
-    document.querySelector('#high-or-low2').innerText = "that's too low"
-  } else {
-        document.querySelector('#high-or-low2').innerText = "BOOM!"
-  } 
+  // console.log('submitGuess ran')
+  name1Text.innerText = person1Name.value;
+  guess1Text.innerText = person1Guess.value;
+  name2Text.innerText = person2Name.value;
+  guess2Text.innerText = person2Guess.value;
+  compareGuess1();
+  compareGuess2();
   determineWinner();
 }
 
+// Create Winner Cards
 function determineWinner() {
   if (randomNum == parseInt(person1Guess.value)) {
     var winner = person1Name.value;
@@ -196,16 +224,6 @@ function createCards(winner, loser) {
   <p class='winner'>WINNER</p></div>`;
   document.querySelector('#card-holder').insertAdjacentHTML('afterbegin', winnerCard);
 }
-
-// function disableButton() {
-//    if(document.querySelectorAll('input[type=text]').value === "" || document.querySelectorall('input[type=number]').value) === "" { 
-//             document.querySelector('#reset-game-button').disabled = true;
-//             document.queryselector('#clear-game-button').disabled = true; 
-//         } else { 
-//             document.querySelector('#reset-game-button').disabled = false;
-//             document.queryselector('#clear-game-button').disabled = false;
-//         }
-//     }
 
 function disableButton() {
   if (person1Name !== '' || person1Guess !== '' || person2Name !== '' || person2Guess !== '') {
